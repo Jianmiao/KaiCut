@@ -1,0 +1,10 @@
+KaiCut / 开剪
+Copyright 2026 KaiCut contributors
+
+KaiCut original source code is licensed under the Apache License, Version 2.0.
+See LICENSE for the full text.
+
+Third-party components retain their respective licenses. FFmpeg, when supplied
+as a separate sidecar, is distributed under its own LGPL license, not under
+the Apache License. No FFmpeg binary is included in this scaffold.
+See THIRD_PARTY_NOTICES.md and src-tauri/binaries/README.md for current status.

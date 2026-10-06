@@ -1,0 +1,655 @@
+Window: "DevTools - tauri.localhost/", App: msedgewebview2.exe.
+	0 窗口 DevTools - tauri.localhost/ Secondary Actions: Raise
+		1 窗格 (disabled)
+		2 区域 DevTools - tauri.localhost/
+			3 区域
+				4 区域
+					5 文本 DevTools - tauri.localhost/ ID: view_9
+					6 区域
+						7 按钮 最小化 ID: view_2
+						8 按钮 最大化 ID: view_3
+						9 按钮 关闭 ID: view_7
+					10 区域
+						11 区域
+							12 编辑 地址和搜索栏 Description: 搜索或输入 Web 地址 Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot ID: view_1017
+						13 区域
+							14 区域
+								15 区域
+									16 区域
+										17 区域
+										19 文档 DevTools Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot ID: RootWebArea
+											20 组
+												21 导航 主工具栏
+													22 工具栏
+														38 组 在页面中选择一个元素以进行检查 Description: 在页面中选择一个元素以进行检查 - Ctrl + Shift + C
+															39 切换按钮 在页面中选择一个元素以进行检查 - Ctrl + Shift + C Description: 在页面中选择一个元素以进行检查 - Ctrl + Shift + C
+													23 选项卡 面板
+														24 选项卡项目 (selectable) 欢迎 ID: tab-welcome
+														25 选项卡项目 (selectable) 元素 ID: tab-elements
+														26 选项卡项目 (selectable) 控制台 ID: tab-console
+														27 选项卡项目 (selectable) 源代码 ID: tab-sources
+														28 选项卡项目 (selectable) 网络 ID: tab-network
+														29 选项卡项目 (selectable) 性能 ID: tab-timeline
+														30 选项卡项目 (selectable) 内存 ID: tab-heap-profiler
+													33 组 更多工具 Description: 更多工具
+														34 按钮 更多工具 Description: 更多工具
+													35 工具栏
+													36 工具栏
+														40 组 打开问题以查看 2 个问题: 2 个可能的改进 Description: 打开问题以查看 2 个问题: 2 个可能的改进
+															41 按钮 打开问题以查看 2 个问题: 2 个可能的改进
+														42 组 设置 Description: 设置 - F1 - Shift + ?
+															43 按钮 设置 - F1 - Shift + ? Description: 设置 - F1 - Shift + ?
+														44 按钮 Customize and control DevTools Description: Customize and control DevTools
+															45 按钮 Customize and control DevTools Description: Customize and control DevTools
+												107 选项卡面板 元素 ID: panel-elements
+													108 组 elements
+														109 主要 DOM 树资源管理器 ID: elements-content
+															110 树 页面 DOM
+																111 树项目 <!DOCTYPE html>
+																	112 组
+																113 树项目 <html lang=​"zh-CN" data-theme=​"dark" class=​"dark" data-transparency=​"on" data-motion=​"full" data-platform=​"windows"> ​ 查看源代码
+																	114 组 <html lang=​"zh-CN" data-theme=​"dark" class=​"dark" data-transparency=​"on" data-motion=​"full" data-platform=​"windows">
+																	115 组
+																	116 按钮 查看源代码
+																117 组
+																	118 树项目 <head> ​ 展开 …​ </head> ​
+																		119 组 <head>
+																		120 按钮 展开
+																		121 组 </head>
+																		122 组
+																	123 树项目 <body style> ​
+																		124 组 <body style>
+																		125 组
+																	126 组
+																		127 树项目 <div id=​"root"> ​
+																			1249 组 <div id=​"root">
+																			131 组
+																		1250 组
+																			1251 树项目 <main class=​"app-shell"> ​ 启用网格模式
+																				1252 组 <main class=​"app-shell">
+																				1253 组
+																				1254 切换按钮 启用网格模式
+																			1255 组
+																				1256 树项目 <header class=​"project-toolbar" aria-label=​"项目工具栏"> ​ 启用网格模式
+																					2802 组 <header class=​"project-toolbar" aria-label=​"项目工具栏">
+																					1260 组
+																					1261 切换按钮 启用网格模式
+																				2803 组
+																					2804 树项目 <div class=​"project-toolbar__leading"> ​ 展开 …​ </div> ​ 启用弹性模式
+																						2805 组 <div class=​"project-toolbar__leading">
+																						2806 按钮 展开
+																						2807 组 </div>
+																						2808 组
+																						2809 切换按钮 启用弹性模式
+																					2810 树项目 <div class=​"project-toolbar__project"> ​ 展开 …​ </div> ​ 启用弹性模式
+																						2811 组 <div class=​"project-toolbar__project">
+																						2812 按钮 展开
+																						2813 组 </div>
+																						2814 组
+																						2815 切换按钮 启用弹性模式
+																					2816 树项目 <nav class=​"project-toolbar__actions" aria-label=​"工具栏操作"> ​ 启用弹性模式
+																						2817 组 <nav class=​"project-toolbar__actions" aria-label=​"工具栏操作">
+																						2818 组
+																						2819 切换按钮 启用弹性模式
+																					2820 组
+																						2821 树项目 <button type=​"button" aria-label=​"快捷键" title=​"快捷键" class=​"inline-flex cursor-default select-none items-center justify-center gap-2 whitespace-nowrap rounded-[var(--kc-radius-control)​]​ text-sm font-medium transition-colors duration-[var(--kc-duration-press)​]​ focus-visible:​outline-2 focus-visible:​outline-offset-2 focus-visible:​outline-[var(--kc-color-focus)​]​ disabled:​cursor-not-allowed disabled:​opacity-50 border border-transparent bg-transparent text-[var(--kc-color-text-primary)​]​ enabled:​hover:​bg-[var(--kc-color-content-muted)​]​ h-8 w-8 p-0 project-toolbar__icon"> ​ 展开 …​ </button> ​ 启用弹性模式
+																							2822 组 <button type=​"button" aria-label=​"快捷键" title=​"快捷键" class=​"inline-flex cursor-default select-none items-center justify-center gap-2 whitespace-nowrap rounded-[var(--kc-radius-control)​]​ text-sm font-medium transition-colors duration-[var(--kc-duration-press)​]​ focus-visible:​outline-2 focus-visible:​outline-offset-2 focus-visible:​outline-[var(--kc-color-focus)​]​ disabled:​cursor-not-allowed disabled:​opacity-50 border border-transparent bg-transparent text-[var(--kc-color-text-primary)​]​ enabled:​hover:​bg-[var(--kc-color-content-muted)​]​ h-8 w-8 p-0 project-toolbar__icon">
+																							2823 按钮 展开
+																							2824 组 </button>
+																							2825 组
+																							2826 切换按钮 启用弹性模式
+																						2827 树项目 <div class=​"relative inline-block text-left"> ​ 展开 …​ </div> ​
+																							2828 组 <div class=​"relative inline-block text-left">
+																							2829 按钮 展开
+																							2830 组 </div>
+																							2831 组
+																						2832 树项目 <span class=​"project-toolbar__separator" aria-hidden=​"true"> ​ </span> ​
+																							2833 组 <span class=​"project-toolbar__separator" aria-hidden=​"true">
+																							2834 组 </span>
+																							2835 组
+																						2836 树项目 (selectable) <button type=​"button" aria-label=​"导出" title=​"导出" class=​"inline-flex cursor-default select-none items-center justify-center gap-2 whitespace-nowrap rounded-[var(--kc-radius-control)​]​ text-sm font-medium transition-colors duration-[var(--kc-duration-press)​]​ focus-visible:​outline-2 focus-visible:​outline-offset-2 focus-visible:​outline-[var(--kc-color-focus)​]​ disabled:​cursor-not-allowed disabled:​opacity-50 border border-transparent bg-[var(--kc-color-accent)​]​ text-[var(--kc-color-text-on-accent)​]​ enabled:​hover:​bg-[var(--kc-color-accent-hover)​]​ enabled:​active:​bg-[var(--kc-color-accent-pressed,var(--kc-color-accent-hover)​)​]​ h-8 px-3 py-1 project-toolbar__export"> ​ 展开 …​ </button> ​ 启用弹性模式
+																							2837 组 <button type=​"button" aria-label=​"导出" title=​"导出" class=​"inline-flex cursor-default select-none items-center justify-center gap-2 whitespace-nowrap rounded-[var(--kc-radius-control)​]​ text-sm font-medium transition-colors duration-[var(--kc-duration-press)​]​ focus-visible:​outline-2 focus-visible:​outline-offset-2 focus-visible:​outline-[var(--kc-color-focus)​]​ disabled:​cursor-not-allowed disabled:​opacity-50 border border-transparent bg-[var(--kc-color-accent)​]​ text-[var(--kc-color-text-on-accent)​]​ enabled:​hover:​bg-[var(--kc-color-accent-hover)​]​ enabled:​active:​bg-[var(--kc-color-accent-pressed,var(--kc-color-accent-hover)​)​]​ h-8 px-3 py-1 project-toolbar__export">
+																							2838 按钮 展开
+																							2839 组 </button>
+																							2840 组
+																							2841 切换按钮 启用弹性模式
+																						2842 树项目 </nav> ​
+																							2843 组 </nav>
+																							2844 组
+																					2845 树项目 <input hidden accept=​".kaicut" type=​"file"> ​
+																						2846 组 <input hidden accept=​".kaicut" type=​"file">
+																						2847 组
+																					2848 树项目 </header> ​
+																						2849 组 </header>
+																						2850 组
+																				1262 树项目 <div class=​"workspace-grid" data-library=​"true" data-inspector=​"true"> ​ 展开 …​ </div> ​ 启用网格模式
+																					1263 组 <div class=​"workspace-grid" data-library=​"true" data-inspector=​"true">
+																					1264 按钮 展开
+																					1265 组 </div>
+																					1266 组
+																					1267 切换按钮 启用网格模式
+																				1268 树项目 <footer class=​"app-status"> ​ 展开 …​ </footer> ​ 启用弹性模式
+																					1269 组 <footer class=​"app-status">
+																					1270 按钮 展开
+																					1271 组 </footer>
+																					1272 组
+																					1273 切换按钮 启用弹性模式
+																				1274 树项目 </main> ​
+																					1275 组 </main>
+																					1276 组
+																			1277 树项目 </div> ​
+																				1278 组 </div>
+																				1279 组
+																		132 树项目 </body> ​
+																			133 组 </body>
+																			134 组
+																	135 树项目 </html> ​
+																		136 组 </html>
+																		137 组
+														138 导航 DOM 树痕迹导航
+															2851 按钮 向左滚动 Description: 向左滚动
+															139 列表
+																140 列表项目 html.dark
+																	141 链接 html.dark Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot#
+																142 列表项目 body
+																	143 链接 body Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot#
+																1280 列表项目 div#root
+																	1281 链接 div#root Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot#
+																1282 列表项目 main.app-shell
+																	1283 链接 main.app-shell Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot#
+																1284 列表项目 header.project-toolbar
+																	1285 链接 header.project-toolbar Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot#
+																2852 列表项目 nav.project-toolbar__actions
+																	2853 链接 nav.project-toolbar__actions Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot#
+																2854 列表项目 button.inline-flex.cursor-default.select-none.items-center.justify-center.gap-2.whitespace-nowrap.rounded-\[var\(--kc-radius-control\)\].text-sm.font-medium.transition-colors.duration-\[var\(--kc-duration-press\)\].focus-visible\:outline-2.focus-visible\:outline-offset-2.focus-visible\:outline-\[var\(--kc-color-focus\)\].disabled\:cursor-not-allowed.disabled\:opacity-50.border.border-transparent.bg-\[var\(--kc-color-accent\)\].text-\[var\(--kc-color-text-on-accent\)\].enabled\:hover\:bg-\[var\(--kc-color-accent-hover\)\].enabled\:active\:bg-\[var\(--kc-color-accent-pressed\,var\(--kc-color-accent-hover\)\)\].h-8.px-3.py-1.project-toolbar__export
+																	2855 链接 button.inline-flex.cursor-default.select-none.items-center.justify-center.gap-2.whitespace-nowrap.rounded-\[var\(--kc-radius-control\)\].text-sm.font-medium.transition-colors.duration-\[var\(--kc-duration-press\)\].focus-visible\:outline-2.focus-visible\:outline-offset-2.focus-visible\:outline-\[var\(--kc-color-focus\)\].disabled\:cursor-not-allowed.disabled\:opacity-50.border.border-transparent.bg-\[var\(--kc-color-accent\)\].text-\[var\(--kc-color-text-on-accent\)\].enabled\:hover\:bg-\[var\(--kc-color-accent-hover\)\].enabled\:active\:bg-\[var\(--kc-color-accent-pressed\,var\(--kc-color-accent-hover\)\)\].h-8.px-3.py-1.project-toolbar__export Value: devtools://devtools/bundled/devtools_app.html?remoteBase=https://msedgedevtools.microsoft.com/serve_file/@5af6e80f702cffe10645c6d6433668f011b739be/&targetType=tab&isEdgeWebView=true&msEdgeCSSCopilot=true&enabledExperiments=msEdgeDevToolsNetworkConsole;layersIn3DView;keyboardShortcutEditor;msEdgeVSCodeThemes;msEdgeDevToolsDetachedElements;msEdgeDynamicWelcome;msEdgeAIExplainConsoleError;msEdgeCSSCopilot#
+															2856 按钮 向右滚动 Description: 向右滚动
+														1240 工具栏
+														1241 编辑 (settable, string) 按字符串、选择器或 XPath 查找 Description: 按字符串、选择器或 XPath 查找 Value: .project-toolbar__export ID: search-input-field
+														1286 组 清除 Description: 清除
+															1287 按钮 清除 Description: 清除
+														1242 工具栏
+															1243 组 显示上一个结果 Description: 显示上一个结果
+																1244 按钮 显示上一个结果 Description: 显示上一个结果
+															1245 组 显示下一个结果 Description: 显示下一个结果
+																1246 按钮 显示下一个结果 Description: 显示下一个结果
+															1247 组 显示第 1 个结果，共 1 个
+														1248 按钮 关闭搜索栏 Description: 关闭搜索栏
+														144 组
+															145 导航 侧面板工具栏
+																146 选项卡
+																	147 选项卡项目 (selectable) 样式 ID: tab-styles
+																	148 选项卡项目 (selectable) 已计算 ID: tab-computed
+																	149 选项卡项目 (selectable) 布局 ID: tab-elements.layout
+																	150 选项卡项目 (selectable) 事件侦听器 ID: tab-elements.event-listeners
+																	151 选项卡项目 (selectable) DOM breakpoints ID: tab-elements.dom-breakpoints
+																	152 选项卡项目 (selectable) 属性 ID: tab-elements.dom-properties
+																	153 选项卡项目 (selectable) 辅助功能 ID: tab-accessibility.view
+																154 工具栏
+																155 工具栏
+															156 补充 侧面板内容
+																2523 选项卡面板 已计算 ID: panel-computed
+																	1212 文本 margin
+																	1213 文本 0
+																	1214 文本 
+																	1215 文本 0
+																	1216 文本 border
+																	2857 文本 0.667
+																	1218 文本 
+																	2858 文本 0.667
+																	1220 文本 padding
+																	1221 文本 0
+																	1222 文本 
+																	2859 文本 12
+																	2860 文本 50.667
+																	2861 文本 ×
+																	2862 文本 30.667
+																	2863 文本 12
+																	1228 文本 
+																	2864 文本 0
+																	2865 文本 0.667
+																	1231 文本 
+																	2866 文本 0.667
+																	1233 文本 0
+																	1234 文本 
+																	1235 文本 0
+																	2524 组
+																		2525 编辑 (settable, string) 筛选器 Description: 筛选器 Value: 筛选器
+																			2801 文本 筛选器
+																		2527 组 使用正则表达式 Description: 使用正则表达式
+																			2528 切换按钮 使用正则表达式 Description: 使用正则表达式
+																		2529 复选框 (settable, string) 全部显示 Description: 全部显示 ID: ui-checkbox-label10
+																		2530 组 全部显示 Description: 全部显示
+																			2531 文本 全部显示
+																		2532 复选框 (settable, string) 组合 Description: 组合 ID: ui-checkbox-label11
+																		2533 组 组合 Description: 组合
+																			2534 文本 组合
+																		2535 树
+																			2536 树项目 (selectable) CSS 属性名称: align-items CSS 属性值: center
+																				2537 组
+																				2538 组 CSS 属性名称: align-items
+																				2539 组 CSS 属性值: center
+																			2540 树项目 (selectable) CSS 属性名称: appearance CSS 属性值: button
+																				2541 组
+																				2867 组 CSS 属性名称: appearance
+																				2868 组 CSS 属性值: button
+																			2544 树项目 (selectable) CSS 属性名称: background-attachment CSS 属性值: scroll
+																				2545 组
+																				2546 组 CSS 属性名称: background-attachment
+																				2547 组 CSS 属性值: scroll
+																			2548 树项目 (selectable) CSS 属性名称: background-clip CSS 属性值: border-box
+																				2549 组
+																				2550 组 CSS 属性名称: background-clip
+																				2551 组 CSS 属性值: border-box
+																			2552 树项目 (selectable) CSS 属性名称: background-color CSS 属性值: rgb(0, 102, 204)
+																				2553 组
+																				2869 组 CSS 属性名称: background-color
+																				2870 组 CSS 属性值: rgb(0, 102, 204)
+																					2871 组
+																						2872 组 Description: 按住 Shift 并单击可更改颜色格式
+																							2873 组
+																			2559 树项目 (selectable) CSS 属性名称: background-image CSS 属性值: none
+																				2560 组
+																				2561 组 CSS 属性名称: background-image
+																				2562 组 CSS 属性值: none
+																			2563 树项目 (selectable) CSS 属性名称: background-origin CSS 属性值: padding-box
+																				2564 组
+																				2565 组 CSS 属性名称: background-origin
+																				2566 组 CSS 属性值: padding-box
+																			2567 树项目 (selectable) CSS 属性名称: background-position-x CSS 属性值: 0%
+																				2568 组
+																				2569 组 CSS 属性名称: background-position-x
+																				2570 组 CSS 属性值: 0%
+																			2571 树项目 (selectable) CSS 属性名称: background-position-y CSS 属性值: 0%
+																				2572 组
+																				2573 组 CSS 属性名称: background-position-y
+																				2574 组 CSS 属性值: 0%
+																			2575 树项目 (selectable) CSS 属性名称: background-repeat CSS 属性值: repeat
+																				2576 组
+																				2577 组 CSS 属性名称: background-repeat
+																				2578 组 CSS 属性值: repeat
+																			2579 树项目 (selectable) CSS 属性名称: background-size CSS 属性值: auto
+																				2580 组
+																				2581 组 CSS 属性名称: background-size
+																				2582 组 CSS 属性值: auto
+																			2583 树项目 (selectable) CSS 属性名称: border-bottom-color CSS 属性值: rgba(0, 0, 0, 0)
+																				2584 组
+																				2874 组 CSS 属性名称: border-bottom-color
+																				2875 组 CSS 属性值: rgba(0, 0, 0, 0)
+																					2876 组
+																						2877 组 Description: 按住 Shift 并单击可更改颜色格式
+																							2878 组
+																			2590 树项目 (selectable) CSS 属性名称: border-bottom-left-radius CSS 属性值: 6px
+																				2591 组
+																				2879 组 CSS 属性名称: border-bottom-left-radius
+																				2880 组 CSS 属性值: 6px
+																			2594 树项目 (selectable) CSS 属性名称: border-bottom-right-radius CSS 属性值: 6px
+																				2595 组
+																				2881 组 CSS 属性名称: border-bottom-right-radius
+																				2882 组 CSS 属性值: 6px
+																			2598 树项目 (selectable) CSS 属性名称: border-bottom-style CSS 属性值: solid
+																				2599 组
+																				2592 组 CSS 属性名称: border-bottom-style
+																				2593 组 CSS 属性值: solid
+																			2602 树项目 (selectable) CSS 属性名称: border-bottom-width CSS 属性值: 0.666667px
+																				2603 组
+																				2596 组 CSS 属性名称: border-bottom-width
+																				2597 组 CSS 属性值: 0.666667px
+																			2606 树项目 (selectable) CSS 属性名称: border-image-outset CSS 属性值: 0
+																				2607 组
+																				2600 组 CSS 属性名称: border-image-outset
+																				2601 组 CSS 属性值: 0
+																			2610 树项目 (selectable) CSS 属性名称: border-image-repeat CSS 属性值: stretch
+																				2611 组
+																				2604 组 CSS 属性名称: border-image-repeat
+																				2605 组 CSS 属性值: stretch
+																			2614 树项目 (selectable) CSS 属性名称: border-image-slice CSS 属性值: 100%
+																				2615 组
+																				2608 组 CSS 属性名称: border-image-slice
+																				2609 组 CSS 属性值: 100%
+																			2618 树项目 (selectable) CSS 属性名称: border-image-source CSS 属性值: none
+																				2619 组
+																				2612 组 CSS 属性名称: border-image-source
+																				2613 组 CSS 属性值: none
+																			2625 树项目 (selectable) CSS 属性名称: border-image-width CSS 属性值: 1
+																				2626 组
+																				2616 组 CSS 属性名称: border-image-width
+																				2617 组 CSS 属性值: 1
+																			2629 树项目 (selectable) CSS 属性名称: border-left-color CSS 属性值: rgba(0, 0, 0, 0)
+																				2630 组
+																				2883 组 CSS 属性名称: border-left-color
+																				2884 组 CSS 属性值: rgba(0, 0, 0, 0)
+																					2885 组
+																						2886 组 Description: 按住 Shift 并单击可更改颜色格式
+																							2887 组
+																			2633 树项目 (selectable) CSS 属性名称: border-left-style CSS 属性值: solid
+																				2634 组
+																				2627 组 CSS 属性名称: border-left-style
+																				2628 组 CSS 属性值: solid
+																			2640 树项目 (selectable) CSS 属性名称: border-left-width CSS 属性值: 0.666667px
+																				2641 组
+																				2888 组 CSS 属性名称: border-left-width
+																				2889 组 CSS 属性值: 0.666667px
+																			2644 树项目 (selectable) CSS 属性名称: border-right-color CSS 属性值: rgba(0, 0, 0, 0)
+																				2645 组
+																				2890 组 CSS 属性名称: border-right-color
+																				2891 组 CSS 属性值: rgba(0, 0, 0, 0)
+																					2892 组
+																						2893 组 Description: 按住 Shift 并单击可更改颜色格式
+																							2894 组
+																			2648 树项目 (selectable) CSS 属性名称: border-right-style CSS 属性值: solid
+																				2649 组
+																				2642 组 CSS 属性名称: border-right-style
+																				2643 组 CSS 属性值: solid
+																			2655 树项目 (selectable) CSS 属性名称: border-right-width CSS 属性值: 0.666667px
+																				2656 组
+																				2895 组 CSS 属性名称: border-right-width
+																				2896 组 CSS 属性值: 0.666667px
+																			2659 树项目 (selectable) CSS 属性名称: border-top-color CSS 属性值: rgba(0, 0, 0, 0)
+																				2660 组
+																				2897 组 CSS 属性名称: border-top-color
+																				2898 组 CSS 属性值: rgba(0, 0, 0, 0)
+																					2899 组
+																						2900 组 Description: 按住 Shift 并单击可更改颜色格式
+																							2901 组
+																			2663 树项目 (selectable) CSS 属性名称: border-top-left-radius CSS 属性值: 6px
+																				2664 组
+																				2902 组 CSS 属性名称: border-top-left-radius
+																				2903 组 CSS 属性值: 6px
+																			2667 树项目 (selectable) CSS 属性名称: border-top-right-radius CSS 属性值: 6px
+																				2668 组
+																				2904 组 CSS 属性名称: border-top-right-radius
+																				2905 组 CSS 属性值: 6px
+																			2674 树项目 (selectable) CSS 属性名称: border-top-style CSS 属性值: solid
+																				2675 组
+																				2657 组 CSS 属性名称: border-top-style
+																				2658 组 CSS 属性值: solid
+																			2678 树项目 (selectable) CSS 属性名称: border-top-width CSS 属性值: 0.666667px
+																				2679 组
+																				2906 组 CSS 属性名称: border-top-width
+																				2907 组 CSS 属性值: 0.666667px
+																			2682 树项目 (selectable) CSS 属性名称: box-shadow CSS 属性值: none
+																				2683 组
+																				2908 组 CSS 属性名称: box-shadow
+																				2909 组 CSS 属性值: none
+																			2686 树项目 (selectable) CSS 属性名称: box-sizing CSS 属性值: border-box
+																				2687 组
+																				2665 组 CSS 属性名称: box-sizing
+																				2666 组 CSS 属性值: border-box
+																			2690 树项目 (selectable) CSS 属性名称: color CSS 属性值: rgb(255, 255, 255)
+																				2691 组
+																				2910 组 CSS 属性名称: color
+																				2911 组 CSS 属性值: rgb(255, 255, 255)
+																					2912 组
+																						2913 组 Description: 按住 Shift 并单击可更改颜色格式
+																							2914 组
+																			2694 树项目 (selectable) CSS 属性名称: color-scheme CSS 属性值: dark
+																				2695 组
+																				2676 组 CSS 属性名称: color-scheme
+																				2677 组 CSS 属性值: dark
+																			2698 树项目 (selectable) CSS 属性名称: column-gap CSS 属性值: 6px
+																				2699 组
+																				2915 组 CSS 属性名称: column-gap
+																				2916 组 CSS 属性值: 6px
+																			2702 树项目 (selectable) CSS 属性名称: cursor CSS 属性值: default
+																				2703 组
+																				2917 组 CSS 属性名称: cursor
+																				2918 组 CSS 属性值: default
+																			2706 树项目 (selectable) CSS 属性名称: display CSS 属性值: flex
+																				2707 组
+																				2919 组 CSS 属性名称: display
+																				2920 组 CSS 属性值: flex
+																			2710 树项目 (selectable) CSS 属性名称: font-family CSS 属性值: "Segoe UI", "Microsoft YaHei UI", system-ui
+																				2711 组
+																				2688 组 CSS 属性名称: font-family
+																				2689 组 CSS 属性值: "Segoe UI", "Microsoft YaHei UI", system-ui
+																			2714 树项目 (selectable) CSS 属性名称: font-feature-settings CSS 属性值: normal
+																				2715 组
+																				2692 组 CSS 属性名称: font-feature-settings
+																				2693 组 CSS 属性值: normal
+																			2718 树项目 (selectable) CSS 属性名称: font-kerning CSS 属性值: auto
+																				2719 组
+																				2921 组 CSS 属性名称: font-kerning
+																				2922 组 CSS 属性值: auto
+																			2722 树项目 (selectable) CSS 属性名称: font-language-override CSS 属性值: normal
+																				2723 组
+																				2923 组 CSS 属性名称: font-language-override
+																				2924 组 CSS 属性值: normal
+																			2726 树项目 (selectable) CSS 属性名称: font-optical-sizing CSS 属性值: auto
+																				2727 组
+																				2925 组 CSS 属性名称: font-optical-sizing
+																				2926 组 CSS 属性值: auto
+																			2730 树项目 (selectable) CSS 属性名称: font-size CSS 属性值: 14px
+																				2731 组
+																				2696 组 CSS 属性名称: font-size
+																				2697 组 CSS 属性值: 14px
+																			2734 树项目 (selectable) CSS 属性名称: font-size-adjust CSS 属性值: none
+																				2735 组
+																				2927 组 CSS 属性名称: font-size-adjust
+																				2928 组 CSS 属性值: none
+																			2738 树项目 (selectable) CSS 属性名称: font-stretch CSS 属性值: 100%
+																				2739 组
+																				2929 组 CSS 属性名称: font-stretch
+																				2930 组 CSS 属性值: 100%
+																			2742 树项目 (selectable) CSS 属性名称: font-style CSS 属性值: normal
+																				2743 组
+																				2931 组 CSS 属性名称: font-style
+																				2932 组 CSS 属性值: normal
+																			2746 树项目 (selectable) CSS 属性名称: font-synthesis-small-caps CSS 属性值: none
+																				2747 组
+																				2700 组 CSS 属性名称: font-synthesis-small-caps
+																				2701 组 CSS 属性值: none
+																			2750 树项目 (selectable) CSS 属性名称: font-synthesis-style CSS 属性值: none
+																				2751 组
+																				2704 组 CSS 属性名称: font-synthesis-style
+																				2705 组 CSS 属性值: none
+																			2754 树项目 (selectable) CSS 属性名称: font-synthesis-weight CSS 属性值: none
+																				2755 组
+																				2708 组 CSS 属性名称: font-synthesis-weight
+																				2709 组 CSS 属性值: none
+																			2758 树项目 (selectable) CSS 属性名称: font-variant-alternates CSS 属性值: normal
+																				2759 组
+																				2933 组 CSS 属性名称: font-variant-alternates
+																				2934 组 CSS 属性值: normal
+																			2762 树项目 (selectable) CSS 属性名称: font-variant-caps CSS 属性值: normal
+																				2763 组
+																				2935 组 CSS 属性名称: font-variant-caps
+																				2936 组 CSS 属性值: normal
+																			2766 树项目 (selectable) CSS 属性名称: font-variant-east-asian CSS 属性值: normal
+																				2767 组
+																				2937 组 CSS 属性名称: font-variant-east-asian
+																				2938 组 CSS 属性值: normal
+																			2770 树项目 (selectable) CSS 属性名称: font-variant-emoji CSS 属性值: normal
+																				2771 组
+																				2939 组 CSS 属性名称: font-variant-emoji
+																				2940 组 CSS 属性值: normal
+																			2774 树项目 (selectable) CSS 属性名称: font-variant-ligatures CSS 属性值: normal
+																				2775 组
+																				2941 组 CSS 属性名称: font-variant-ligatures
+																				2942 组 CSS 属性值: normal
+																			2778 树项目 (selectable) CSS 属性名称: font-variant-numeric CSS 属性值: normal
+																				2779 组
+																				2943 组 CSS 属性名称: font-variant-numeric
+																				2944 组 CSS 属性值: normal
+																			2782 树项目 (selectable) CSS 属性名称: font-variant-position CSS 属性值: normal
+																				2783 组
+																				2945 组 CSS 属性名称: font-variant-position
+																				2946 组 CSS 属性值: normal
+																			2786 树项目 (selectable) CSS 属性名称: font-variation-settings CSS 属性值: normal
+																				2787 组
+																				2712 组 CSS 属性名称: font-variation-settings
+																				2713 组 CSS 属性值: normal
+																			2790 树项目 (selectable) CSS 属性名称: font-weight CSS 属性值: 500
+																				2791 组
+																				2947 组 CSS 属性名称: font-weight
+																				2948 组 CSS 属性值: 500
+																			2794 树项目 (selectable) CSS 属性名称: height CSS 属性值: 32px
+																				2795 组
+																				2949 组 CSS 属性名称: height
+																				2950 组 CSS 属性值: 32px
+																			2951 树项目 (selectable) CSS 属性名称: justify-content CSS 属性值: center
+																				2952 组
+																				2953 组 CSS 属性名称: justify-content
+																				2954 组 CSS 属性值: center
+																			2955 树项目 (selectable) CSS 属性名称: letter-spacing CSS 属性值: normal
+																				2956 组
+																				2957 组 CSS 属性名称: letter-spacing
+																				2958 组 CSS 属性值: normal
+																			2959 树项目 (selectable) CSS 属性名称: line-height CSS 属性值: 20px
+																				2960 组
+																				2724 组 CSS 属性名称: line-height
+																				2725 组 CSS 属性值: 20px
+																			2961 树项目 (selectable) CSS 属性名称: margin-bottom CSS 属性值: 0px
+																				2962 组
+																				2728 组 CSS 属性名称: margin-bottom
+																				2729 组 CSS 属性值: 0px
+																			2963 树项目 (selectable) CSS 属性名称: margin-left CSS 属性值: 0px
+																				2964 组
+																				2732 组 CSS 属性名称: margin-left
+																				2733 组 CSS 属性值: 0px
+																			2965 树项目 (selectable) CSS 属性名称: margin-right CSS 属性值: 0px
+																				2966 组
+																				2736 组 CSS 属性名称: margin-right
+																				2737 组 CSS 属性值: 0px
+																			2967 树项目 (selectable) CSS 属性名称: margin-top CSS 属性值: 0px
+																				2968 组
+																				2740 组 CSS 属性名称: margin-top
+																				2741 组 CSS 属性值: 0px
+																			2969 树项目 (selectable) CSS 属性名称: min-height CSS 属性值: 32px
+																				2970 组
+																				2971 组 CSS 属性名称: min-height
+																				2972 组 CSS 属性值: 32px
+																			2973 树项目 (selectable) CSS 属性名称: min-width CSS 属性值: 76px
+																				2974 组
+																				2975 组 CSS 属性名称: min-width
+																				2976 组 CSS 属性值: 76px
+																			2977 树项目 (selectable) CSS 属性名称: opacity CSS 属性值: 1
+																				2978 组
+																				2979 组 CSS 属性名称: opacity
+																				2980 组 CSS 属性值: 1
+																			2981 树项目 (selectable) CSS 属性名称: padding-block-end CSS 属性值: 0px
+																				2982 组
+																				2983 组 CSS 属性名称: padding-block-end
+																				2984 组 CSS 属性值: 0px
+																			2985 树项目 (selectable) CSS 属性名称: padding-block-start CSS 属性值: 0px
+																				2986 组
+																				2987 组 CSS 属性名称: padding-block-start
+																				2988 组 CSS 属性值: 0px
+																			2989 树项目 (selectable) CSS 属性名称: padding-bottom CSS 属性值: 0px
+																				2990 组
+																				2748 组 CSS 属性名称: padding-bottom
+																				2749 组 CSS 属性值: 0px
+																			2991 树项目 (selectable) CSS 属性名称: padding-inline-end CSS 属性值: 12px
+																				2992 组
+																				2993 组 CSS 属性名称: padding-inline-end
+																				2994 组 CSS 属性值: 12px
+																			2995 树项目 (selectable) CSS 属性名称: padding-inline-start CSS 属性值: 12px
+																				2996 组
+																				2997 组 CSS 属性名称: padding-inline-start
+																				2998 组 CSS 属性值: 12px
+																			2999 树项目 (selectable) CSS 属性名称: padding-left CSS 属性值: 12px
+																				3000 组
+																				3001 组 CSS 属性名称: padding-left
+																				3002 组 CSS 属性值: 12px
+																			3003 树项目 (selectable) CSS 属性名称: padding-right CSS 属性值: 12px
+																				3004 组
+																				3005 组 CSS 属性名称: padding-right
+																				3006 组 CSS 属性值: 12px
+																			3007 树项目 (selectable) CSS 属性名称: padding-top CSS 属性值: 0px
+																				3008 组
+																				2760 组 CSS 属性名称: padding-top
+																				2761 组 CSS 属性值: 0px
+																			3009 树项目 (selectable) CSS 属性名称: row-gap CSS 属性值: 6px
+																				3010 组
+																				3011 组 CSS 属性名称: row-gap
+																				3012 组 CSS 属性值: 6px
+																			3013 树项目 (selectable) CSS 属性名称: tab-size CSS 属性值: 4
+																				3014 组
+																				2772 组 CSS 属性名称: tab-size
+																				2773 组 CSS 属性值: 4
+																			3015 树项目 (selectable) CSS 属性名称: text-align CSS 属性值: center
+																				3016 组
+																				3017 组 CSS 属性名称: text-align
+																				3018 组 CSS 属性值: center
+																			3019 树项目 (selectable) CSS 属性名称: text-indent CSS 属性值: 0px
+																				3020 组
+																				3021 组 CSS 属性名称: text-indent
+																				3022 组 CSS 属性值: 0px
+																			3023 树项目 (selectable) CSS 属性名称: text-rendering CSS 属性值: auto
+																				3024 组
+																				3025 组 CSS 属性名称: text-rendering
+																				3026 组 CSS 属性值: auto
+																			3027 树项目 (selectable) CSS 属性名称: text-shadow CSS 属性值: none
+																				3028 组
+																				3029 组 CSS 属性名称: text-shadow
+																				3030 组 CSS 属性值: none
+																			3031 树项目 (selectable) CSS 属性名称: text-size-adjust CSS 属性值: 100%
+																				3032 组
+																				2780 组 CSS 属性名称: text-size-adjust
+																				2781 组 CSS 属性值: 100%
+																			3033 树项目 (selectable) CSS 属性名称: text-transform CSS 属性值: none
+																				3034 组
+																				3035 组 CSS 属性名称: text-transform
+																				3036 组 CSS 属性值: none
+																			3037 树项目 (selectable) CSS 属性名称: text-wrap-mode CSS 属性值: nowrap
+																				3038 组
+																				3039 组 CSS 属性名称: text-wrap-mode
+																				3040 组 CSS 属性值: nowrap
+																			3041 树项目 (selectable) CSS 属性名称: transition-duration CSS 属性值: 0.12s
+																				3042 组
+																				3043 组 CSS 属性名称: transition-duration
+																				3044 组 CSS 属性值: 0.12s
+																			3045 树项目 (selectable) CSS 属性名称: transition-property CSS 属性值: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to
+																				3046 组
+																				3047 组 CSS 属性名称: transition-property
+																				3048 组 CSS 属性值: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to
+																			3049 树项目 (selectable) CSS 属性名称: transition-timing-function CSS 属性值: cubic-bezier(0.4, 0, 0.2, 1)
+																				3050 组
+																				3051 组 CSS 属性名称: transition-timing-function
+																				3052 组 CSS 属性值: cubic-bezier(0.4, 0, 0.2, 1)
+																			3053 树项目 (selectable) CSS 属性名称: user-select CSS 属性值: none
+																				3054 组
+																				3055 组 CSS 属性名称: user-select
+																				3056 组 CSS 属性值: none
+																			3057 树项目 (selectable) CSS 属性名称: white-space-collapse CSS 属性值: collapse
+																				3058 组
+																				3059 组 CSS 属性名称: white-space-collapse
+																				3060 组 CSS 属性值: collapse
+																			3061 树项目 (selectable) CSS 属性名称: width CSS 属性值: 76px
+																				3062 组
+																				3063 组 CSS 属性名称: width
+																				3064 组 CSS 属性值: 76px
+																			3065 树项目 (selectable) CSS 属性名称: word-spacing CSS 属性值: 0px
+																				3066 组
+																				3067 组 CSS 属性名称: word-spacing
+																				3068 组 CSS 属性值: 0px
+																			3069 树项目 (selectable) CSS 属性名称: -webkit-tap-highlight-color CSS 属性值: rgba(0, 0, 0, 0)
+																				3070 组
+																				2796 组 CSS 属性名称: -webkit-tap-highlight-color
+																				2797 组 CSS 属性值: rgba(0, 0, 0, 0)
+																					2798 组
+																						2799 组 Description: 按住 Shift 并单击可更改颜色格式
+																							2800 组
+																			3071 树项目 (selectable) CSS 属性名称: -webkit-border-image CSS 属性值: none
+																				3072 组
+																				3073 组 CSS 属性名称: -webkit-border-image
+																				3074 组 CSS 属性值: none
+																	3075 文本 Rendered fonts
+																	3076 文本 家庭名称
+																	3077 文本 :
+																	3078 文本 Microsoft YaHei UI
+																	3079 文本 PostScript 名称
+																	3080 文本 :
+																	3081 文本 MicrosoftYaHeiUI
+																	3082 文本 字体来源
+																	3083 文本 :
+																	3084 文本 本地文件
+																	3085 文本 (2 glyphs)
+											47 警报
+												48 文本 已取消开发工具停靠
+											49 状态
+				18 区域
+
+Document text: ```
+筛选器
+```

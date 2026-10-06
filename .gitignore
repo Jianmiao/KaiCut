@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.vite/
+*.local
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+
+# User-provided local fonts are not redistributed with the application.
+/PingFangSC/
+
+# Independent design references and generated Windows-native migration outputs.
+/apple-web-design-skill/
+/macos-for-shadcn/
+/fu-liquiglass-skill/
+/windows-native/bin/
+/windows-native/obj/

@@ -1,0 +1,162 @@
+/* Toolbar uses the shared dark palette. */
+.project-toolbar, .project-toolbar-dialog {
+  --toolbar-menu-fill: #3a3a3c;
+  font-family: var(--kc-font-sans);
+  color: var(--kc-color-text-primary);
+}
+
+.project-toolbar {
+  position: relative;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(0, auto) minmax(240px, 1fr);
+  align-items: center;
+  gap: 16px;
+  height: var(--kc-toolbar-height);
+  min-width: 0;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--kc-color-divider);
+  background: var(--kc-color-toolbar-fallback);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.project-toolbar__leading,
+.project-toolbar__actions {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.project-toolbar__leading { gap: 16px; }
+.project-toolbar__actions { justify-self: end; gap: 8px; }
+.project-toolbar__brand { color: var(--kc-color-text-primary); display: flex; align-items: center; gap: 8px; flex-shrink: 0; white-space: nowrap; }
+.project-toolbar__brand > img { display: block; width: 24px; height: 24px; flex: 0 0 24px; border-radius: 5px; object-fit: contain; }
+.project-toolbar__brand > span { font-size: 16px; font-weight: 600; line-height: 22px; }
+.project-toolbar button {
+  min-height: 32px;
+  height: 32px;
+  font-family: inherit;
+  font-size: var(--kc-font-size-body);
+  line-height: 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: none;
+}
+.project-toolbar .project-toolbar__menu-trigger {
+  gap: 12px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  background: var(--toolbar-menu-fill);
+  color: var(--kc-color-text-primary);
+}
+.project-toolbar .project-toolbar__menu-trigger:hover:not(:disabled) { background: var(--kc-color-content-muted); }
+.project-toolbar__menu-trigger > svg { color: var(--kc-color-text-secondary); }
+.project-toolbar__status { display: inline-flex; align-items: center; gap: 4px; color: var(--kc-color-text-tertiary); font-size: 12px; white-space: nowrap; }
+.project-toolbar__project { display: flex; justify-content: center; min-width: 0; }
+.project-toolbar .project-toolbar__name { max-width: min(36vw, 420px); min-width: 0; padding: 0 8px; font-weight: 600; }
+.project-toolbar__name > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.project-toolbar .project-toolbar__icon { width: 32px; padding: 0; color: var(--kc-color-text-secondary); }
+.project-toolbar .project-toolbar__icon:hover:not(:disabled) { color: var(--kc-color-text-primary); }
+.project-toolbar__separator { width: 1px; height: 18px; background: var(--kc-color-divider); margin: 0 4px; }
+.project-toolbar .project-toolbar__export { min-width: 76px; gap: var(--kc-space-2); padding: 0 var(--kc-space-3); color: #ffffff; background: #0066cc; border-color: transparent; }
+.project-toolbar .project-toolbar__export:hover { background: #005cba; }
+.project-toolbar .project-toolbar__export:active { background: #004f9e; }
+.project-toolbar :focus-visible,
+.project-toolbar-dialog :focus-visible { outline: 2px solid var(--kc-color-focus); outline-offset: 2px; }
+
+.project-toolbar [role="menu"].project-toolbar__menu {
+  min-width: 224px;
+  margin-top: 8px;
+  padding: 6px;
+  border: 1px solid var(--kc-color-border);
+  border-radius: 10px;
+  background: var(--kc-color-content);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+}
+.project-toolbar [role="menu"].project-toolbar__menu::before { content: none; }
+.project-toolbar__menu [role="menuitem"] { min-height: 32px; height: auto; border-radius: 6px; }
+.project-toolbar__menu [role="menuitem"] > span:first-child > span:last-child { font-weight: 400; }
+.project-toolbar-dialog { border-radius: 12px; box-shadow: 0 8px 24px rgb(0 0 0 / 12%); }
+.project-toolbar-dialog button,
+.project-toolbar-dialog input { border-radius: 6px; font-family: inherit; }
+.project-toolbar-dialog .macos-input { color: var(--kc-color-text-primary); background: var(--kc-color-content); border-color: var(--kc-color-border); }
+.project-toolbar-shortcuts { margin: 4px 0; }
+.project-toolbar-shortcuts > div { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--kc-color-divider); font-size: var(--kc-font-size-body); }
+.project-toolbar-shortcuts > div:last-child { border-bottom: 0; }
+.project-toolbar-shortcuts dd { margin: 0; }
+.project-toolbar-shortcuts kbd { font-family: var(--kc-font-mono); font-size: 12px; color: var(--kc-color-text-secondary); }
+
+:root[data-native-material="native"][data-transparency="on"] .project-toolbar {
+  background: var(--kc-native-glass-tint);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+@media (max-width: 900px) {
+  .project-toolbar { grid-template-columns: minmax(166px, 1fr) minmax(0, auto) minmax(166px, 1fr); gap: 8px; padding: 0 12px; }
+  .project-toolbar__leading { gap: 12px; }
+  .project-toolbar__status { display: none; }
+  .project-toolbar__actions { gap: 4px; }
+  .project-toolbar__separator { margin: 0 2px; }
+  .project-toolbar .project-toolbar__name { max-width: 28vw; }
+}
+@media (max-width: 620px) {
+  .project-toolbar { grid-template-columns: 104px minmax(0, 1fr) 134px; gap: 4px; padding: 0 8px; }
+  .project-toolbar__brand > span { display: none; }
+  .project-toolbar__brand > img { width: 22px; height: 22px; flex-basis: 22px; }
+  .project-toolbar__leading { gap: 6px; }
+  .project-toolbar .project-toolbar__menu-trigger { padding: 0 7px; gap: 4px; }
+  .project-toolbar__actions { gap: 3px; }
+  .project-toolbar__separator { display: none; }
+  .project-toolbar .project-toolbar__export { min-width: 58px; padding: 0 8px; }
+  .project-toolbar__export > svg { display: none; }
+  .project-toolbar .project-toolbar__name { width: 100%; max-width: 100%; font-size: 12px; padding: 0 2px; }
+  .project-toolbar [role="menu"].project-toolbar__menu { min-width: 210px; }
+}
+@media (pointer: coarse) {
+  .project-toolbar button { min-height: 44px; height: 44px; min-width: 44px; }
+  .project-toolbar__brand { color: var(--kc-color-text-primary); display: none; }
+  .project-toolbar { grid-template-columns: 66px minmax(0, 1fr) 164px; gap: 4px; padding: 0 8px; }
+  .project-toolbar__status, .project-toolbar__separator { display: none; }
+  .project-toolbar .project-toolbar__export { min-width: 62px; }
+  .project-toolbar .project-toolbar__name { max-width: 100%; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .project-toolbar { background: var(--kc-color-toolbar-fallback) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+}
+:root[data-transparency="off"] .project-toolbar [role="menu"].project-toolbar__menu { -webkit-backdrop-filter: none; backdrop-filter: none; }
+@media (forced-colors: active) {
+  .project-toolbar, .project-toolbar [role="menu"].project-toolbar__menu, .project-toolbar-dialog { background: Canvas !important; color: CanvasText; border: 1px solid CanvasText; box-shadow: none; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .project-toolbar button { border: 1px solid ButtonText; color: ButtonText; }
+  .project-toolbar .project-toolbar__export { background: Highlight; color: HighlightText; }
+}
+
+/* Windows merges window controls into the single project title bar. */
+.project-toolbar[data-window-chrome] {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  padding: 0 0 0 var(--kc-space-3);
+  gap: var(--kc-space-3);
+  user-select: none;
+}
+.project-toolbar[data-window-chrome] .project-toolbar__name { max-width: min(24vw, 320px); }
+.project-toolbar[data-window-chrome] .project-toolbar__actions { align-self: stretch; }
+.project-toolbar__window-controls { display: flex; align-items: stretch; gap: 0; margin-left: 4px; flex-shrink: 0; height: calc(var(--kc-toolbar-height) - 1px); }
+.project-toolbar .project-toolbar__window-control {
+  width: var(--kc-window-control-width); min-width: var(--kc-window-control-width); height: 100%; min-height: 0;
+  padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--kc-color-text-secondary);
+}
+.project-toolbar .project-toolbar__window-control:hover { background: var(--kc-color-content-muted); color: var(--kc-color-text-primary); }
+.project-toolbar .project-toolbar__window-control-close:hover { background: var(--kc-color-window-close-hover); color: var(--kc-color-text-on-accent); }
+.project-toolbar .project-toolbar__window-control:focus-visible { outline-offset: -4px; }
+@media (max-width: 900px) {
+  .project-toolbar[data-window-chrome] .project-toolbar__leading { gap: 8px; }
+  .project-toolbar[data-window-chrome] .project-toolbar__actions { gap: 4px; }
+}
+@media (max-width: 620px) {
+  .project-toolbar[data-window-chrome] { gap: 4px; }
+  .project-toolbar[data-window-chrome] .project-toolbar__icon { display: none; }
+  .project-toolbar[data-window-chrome] .project-toolbar__name { max-width: 20vw; }
+  .project-toolbar__window-controls { margin-left: 0; }
+}
+@media (forced-colors: active) {
+  .project-toolbar .project-toolbar__window-control { background: Canvas; color: ButtonText; border: 1px solid ButtonText; }
+  .project-toolbar .project-toolbar__window-control:hover { background: Highlight; color: HighlightText; }
+}
