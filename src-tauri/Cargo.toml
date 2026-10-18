@@ -4,9 +4,88 @@ version = "0.1.0"
 description = "KaiCut / 开剪 desktop video editor shell"
 authors = ["KaiCut contributors"]
 license = "Apache-2.0"
-repository = ""
+repository = "https://github.com/Jianmiao/KaiCut"
 edition = "2024"
 rust-version = "1.90"
+
+[features]
+# Standalone diagnostic example only; normal desktop builds do not enable it.
+native-clock-probe = ["windows/Win32_Media_Audio", "windows/Win32_System_Com", "windows/Win32_System_Com_StructuredStorage", "windows/Win32_System_Variant", "windows/Win32_System_Performance"]
+native-media-probe = ["native-clock-probe"]
+native-d3d-probe = ["native-media-probe", "windows/Win32_Graphics_Direct3D11", "windows/Win32_Graphics_Direct3D_Fxc", "windows/Win32_Graphics_Dxgi_Common"]
+native-preview-queue = []
+native-queue-probe = ["native-d3d-probe", "native-preview-queue"]
+native-stream-probe = ["native-queue-probe"]
+native-present-probe = ["native-d3d-probe"]
+native-av-present-probe = ["native-stream-probe", "native-present-probe"]
+native-preview-surface = []
+native-surface-probe = ["native-av-present-probe", "native-preview-surface", "windows/Win32_Graphics_DirectComposition", "windows/Win32_UI_WindowsAndMessaging", "windows/Win32_UI_HiDpi", "windows/Win32_System_LibraryLoader", "windows/Win32_Graphics_Gdi"]
+native-preview-host = ["native-surface-probe"]
+
+[[example]]
+name = "native_clock_probe"
+path = "examples/native_clock_probe.rs"
+required-features = ["native-clock-probe"]
+
+[[example]]
+name = "native_media_probe"
+path = "examples/native_media_probe.rs"
+required-features = ["native-media-probe"]
+
+[[example]]
+name = "native_d3d_probe"
+path = "examples/native_d3d_probe.rs"
+required-features = ["native-d3d-probe"]
+
+[[example]]
+name = "native_queue_probe"
+path = "examples/native_queue_probe.rs"
+required-features = ["native-queue-probe"]
+
+[[example]]
+name = "native_stream_probe"
+path = "examples/native_stream_probe.rs"
+required-features = ["native-stream-probe"]
+
+[[example]]
+name = "native_compat_probe"
+path = "examples/native_compat_probe.rs"
+required-features = ["native-stream-probe"]
+
+[[example]]
+name = "native_audio_timing_probe"
+path = "examples/native_audio_timing_probe.rs"
+required-features = ["native-stream-probe"]
+
+[[example]]
+name = "native_audio_transport_probe"
+path = "examples/native_audio_transport_probe.rs"
+required-features = ["native-stream-probe"]
+
+[[example]]
+name = "native_audio_session_probe"
+path = "examples/native_audio_session_probe.rs"
+required-features = ["native-stream-probe"]
+
+[[example]]
+name = "native_av_session_probe"
+path = "examples/native_av_session_probe.rs"
+required-features = ["native-stream-probe"]
+
+[[example]]
+name = "native_present_probe"
+path = "examples/native_present_probe.rs"
+required-features = ["native-present-probe"]
+
+[[example]]
+name = "native_av_present_probe"
+path = "examples/native_av_present_probe.rs"
+required-features = ["native-av-present-probe"]
+
+[[example]]
+name = "native_surface_probe"
+path = "examples/native_surface_probe.rs"
+required-features = ["native-surface-probe"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -21,18 +100,20 @@ tauri-build = { version = "2.7.1", features = [] }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
-tauri = { version = "2.12.1", features = [] }
+tauri = { version = "2.12.1", features = ["protocol-asset"] }
 tauri-plugin-log = "2"
 tauri-plugin-dialog = "2"
 chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
 tempfile = "3"
 uuid = { version = "1", features = ["v4"] }
+base64 = "0.22"
+sha2 = "0.10"
 
 [target.'cfg(any(target_os = "windows", target_os = "macos"))'.dependencies]
 window-vibrancy = "=0.8.1"
 
 [target.'cfg(target_os = "windows")'.dependencies]
-windows = { version = "0.62", features = ["UI_ViewManagement", "Win32_Graphics_Dwm"] }
+windows = { version = "0.62", features = ["UI_ViewManagement", "Win32_Graphics_Dwm", "Win32_System_JobObjects", "Win32_System_Threading", "Win32_Security"] }
 windows-version = "0.1"
 
 [target.'cfg(target_os = "macos")'.dependencies]

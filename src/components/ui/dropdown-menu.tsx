@@ -101,7 +101,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, items, align = 'le
         ? <div key={`separator-${index}`} role="separator" className="my-1.5 h-px bg-[var(--kc-color-divider)]" />
         : <button key={item.id} type="button" role="menuitem" aria-label={item.label} disabled={item.disabled} tabIndex={-1}
           onClick={() => { close(); item.onClick?.() }}
-          className={cn('group flex min-h-8 w-full cursor-default items-center justify-between rounded-lg px-2.5 text-sm transition-colors duration-[var(--kc-duration-press)] focus-visible:outline-2 focus-visible:outline-[var(--kc-color-focus)] disabled:cursor-not-allowed disabled:opacity-50',
+          className={cn('group flex min-h-8 w-full cursor-default items-center justify-between rounded-[var(--kc-radius-control)] px-2.5 text-sm transition-colors duration-[var(--kc-duration-press)] focus-visible:outline-2 focus-visible:outline-[var(--kc-color-focus)] disabled:cursor-not-allowed disabled:opacity-50',
             item.destructive ? 'text-[var(--kc-color-danger)] enabled:hover:bg-[var(--kc-color-danger)] enabled:hover:text-white' : 'text-[var(--kc-color-text-primary)] enabled:hover:bg-[var(--kc-color-selection)]')}>
           <span className="flex min-w-0 items-center gap-2.5">{item.icon && <span className="flex h-4 w-4 shrink-0 items-center justify-center [&>svg]:h-3.5 [&>svg]:w-3.5" aria-hidden="true">{item.icon}</span>}<span className="truncate font-medium">{item.label}</span></span>
           {item.shortcut && <span className="ml-4 font-mono text-xs text-[var(--kc-color-text-secondary)]" aria-hidden="true">{item.shortcut}</span>}

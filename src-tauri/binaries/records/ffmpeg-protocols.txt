@@ -1,0 +1,17 @@
+ffmpeg version n7.1 Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 16.2.0 (Rev4, Built by MSYS2 project)
+  configuration: --prefix=/e/ffmpeg-build/install-n7.1-export --target-os=mingw32 --arch=x86_64 --cross-prefix=x86_64-w64-mingw32- --cc=x86_64-w64-mingw32-gcc --cxx=x86_64-w64-mingw32-g++ --ar=ar --ranlib=ranlib --nm=nm --pkg-config=pkg-config --pkg-config-flags=--static --extra-ldflags=-static --extra-libs='-static-libgcc -static-libstdc++' --disable-gpl --disable-nonfree --disable-version3 --disable-debug --disable-doc --disable-network --disable-autodetect --disable-everything --enable-static --disable-shared --enable-mediafoundation --enable-protocol='file,pipe' --enable-zlib --enable-demuxer='mov,mp3,wav,image2,image2pipe,lavfi' --enable-muxer='image2,image2pipe,mp4,wav,mp3,rawvideo' --enable-decoder='h264,aac,mp3,pcm_s16le,mjpeg,png,wrapped_avframe' --enable-encoder='h264_mf,aac,mjpeg,png,wrapped_avframe,pcm_s16le,rawvideo' --enable-parser='h264,aac,mpegaudio,png' --enable-bsf='h264_mp4toannexb,aac_adtstoasc' --enable-filter='scale,format,thumbnail,showwaves,aresample,anull,atrim,testsrc2,color,anullsrc,trim,setpts,asetpts,fps,setsar,pad,overlay,concat,amix,volume,afade,adelay,apad,aformat,split,asplit' --enable-indev=lavfi --enable-avfilter --enable-runtime-cpudetect
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+Supported file protocols:
+Input:
+  file
+  pipe
+Output:
+  file
+  pipe

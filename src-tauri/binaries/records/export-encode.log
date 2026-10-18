@@ -1,0 +1,26 @@
+Input #0, lavfi, from 'testsrc2=size=320x240:rate=30:duration=2':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: wrapped_avframe, yuv420p, 320x240 [SAR 1:1 DAR 4:3], 30 fps, 30 tbr, 30 tbn
+[aist#1:0/pcm_s16le @ 000002410cd87680] Guessed Channel Layout: mono
+Input #1, wav, from 'E:/ffmpeg-build/test-audio.wav':
+  Duration: 00:00:06.19, bitrate: 705 kb/s
+  Stream #1:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, mono, s16, 705 kb/s
+Stream mapping:
+  Stream #0:0 (wrapped_avframe) -> trim:default
+  Stream #1:0 (pcm_s16le) -> atrim:default
+  overlay:default -> Stream #0:0 (h264_mf)
+  amix:default -> Stream #0:1 (aac)
+[h264_mf @ 000002410cd74140] MFT name: 'H264 Encoder MFT'
+Output #0, mp4, to 'E:/ffmpeg-build/records/n7.1-export/export-probe.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 320x240 [SAR 1:1 DAR 4:3], q=2-31, 1000 kb/s, 30 fps, 15360 tbn
+      Metadata:
+        encoder         : Lavc61.19.100 h264_mf
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 96 kb/s
+      Metadata:
+        encoder         : Lavc61.19.100 aac
+[mp4 @ 000002410cd7d240] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 000002410cd205c0] video:143KiB audio:24KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.346853%
+frame=   90 fps=0.0 q=-0.0 Lsize=     170KiB time=00:00:02.96 bitrate= 470.4kbits/s speed=18.4x
+[aac @ 000002410cd8b980] Qavg: 22755.543

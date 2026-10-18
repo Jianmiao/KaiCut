@@ -30,7 +30,7 @@ const TabsList = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
   ({ className, onKeyDown, ...props }, ref) => {
     const context = React.useContext(TabsContext)
     return <div ref={ref} {...props} role="tablist" aria-label={props['aria-label'] ?? context?.label}
-      className={cn('inline-flex min-h-8 select-none items-center justify-center rounded-lg border border-[var(--kc-color-border)] bg-[var(--kc-color-content-muted)] p-0.5 text-[var(--kc-color-text-secondary)]', className)}
+      className={cn('inline-flex min-h-8 select-none items-center justify-center rounded-[var(--kc-radius-control)] border border-[var(--kc-color-border)] bg-[var(--kc-color-content-muted)] p-0.5 text-[var(--kc-color-text-secondary)]', className)}
       onKeyDown={(event) => {
         onKeyDown?.(event)
         if (event.defaultPrevented || event.nativeEvent.isComposing) return
@@ -67,7 +67,7 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
       aria-label={props['aria-label'] ?? (typeof children === 'string' ? children : value)}
       disabled={disabled} tabIndex={selected && !disabled ? 0 : -1}
       onClick={(event) => { onClick?.(event); if (!event.defaultPrevented) context?.onValueChange(value) }}
-      className={cn('inline-flex min-h-7 cursor-default items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-sm font-medium transition-colors duration-[var(--kc-duration-press)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--kc-color-focus)] disabled:cursor-not-allowed disabled:opacity-50',
+      className={cn('inline-flex min-h-7 cursor-default items-center justify-center whitespace-nowrap rounded-[var(--kc-radius-control)] px-2.5 py-0.5 text-sm font-medium transition-colors duration-[var(--kc-duration-press)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--kc-color-focus)] disabled:cursor-not-allowed disabled:opacity-50',
         selected ? 'border border-[var(--kc-color-border)] bg-[var(--kc-color-content)] text-[var(--kc-color-text-primary)] shadow-xs' : 'border border-transparent text-[var(--kc-color-text-secondary)] enabled:hover:bg-[var(--kc-color-content)] enabled:hover:text-[var(--kc-color-text-primary)]', className)}>
       {children}
     </button>

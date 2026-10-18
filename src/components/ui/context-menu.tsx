@@ -98,7 +98,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
             role="menu"
             onContextMenu={(e) => e.preventDefault()}
             className={cn(
-              "fixed z-50 min-w-[200px] rounded-xl macos-popover p-1.5 border border-[var(--border-color)] shadow-xl animate-in fade-in-50 zoom-in-95 duration-100 select-none",
+              "kc-menu-appear fixed z-50 min-w-[200px] rounded-[var(--kc-radius-popover)] macos-popover p-1.5 border border-[var(--border-color)] select-none",
               className
             )}
             style={{ left: coords.x, top: coords.y }}
@@ -121,10 +121,10 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
                     }
                   }}
                   className={cn(
-                    "group flex h-7 w-full items-center justify-between rounded-lg px-2.5 text-xs transition-colors cursor-default",
+                    "group flex h-7 w-full items-center justify-between rounded-[var(--kc-radius-control)] px-2.5 text-xs transition-colors cursor-default",
                     item.destructive
-                      ? "text-[#FF3B30] hover:bg-[#FF3B30] hover:text-white"
-                      : "text-[var(--text-main)] hover:bg-[#007AFF] hover:text-white",
+                      ? "text-[var(--kc-color-danger)] hover:bg-[var(--kc-color-danger)] hover:text-white"
+                      : "text-[var(--text-main)] hover:bg-[var(--kc-color-selection)] hover:text-[var(--kc-color-text-primary)]",
                     item.disabled && "opacity-50 cursor-not-allowed hover:bg-transparent hover:text-[var(--text-main)]"
                   )}
                 >

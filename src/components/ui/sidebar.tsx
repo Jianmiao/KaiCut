@@ -136,9 +136,9 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
         data-side={side}
         data-variant={variant}
         className={cn(
-          "macos-sidebar group/sidebar relative flex flex-col shrink-0 transition-[width] duration-300 ease-in-out z-20 overflow-hidden",
+          "macos-sidebar group/sidebar relative flex flex-col shrink-0 transition-[width] duration-[var(--kc-duration-dialog)] ease-[var(--kc-ease-out-ui)] z-20 overflow-hidden",
           "border-r border-[var(--border-subtle)]",
-          variant === "floating" && "m-2 rounded-2xl border shadow-sm",
+          variant === "floating" && "m-2 rounded-[var(--kc-radius-surface)] border shadow-sm",
           variant === "inset" && "bg-transparent border-r-0",
           currentWidth,
           className
@@ -176,7 +176,7 @@ export const SidebarTrigger = React.forwardRef<
         toggleSidebar()
       }}
       className={cn(
-        "inline-flex items-center justify-center h-7 w-7 rounded-md text-[var(--text-secondary)] hover:text-[var(--text-main)] hover:bg-black/5 dark:hover:bg-white/10 active:bg-black/10 dark:active:bg-white/15 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#007AFF] shrink-0 cursor-default select-none",
+        "inline-flex items-center justify-center h-7 w-7 rounded-[var(--kc-radius-control)] text-[var(--text-secondary)] hover:text-[var(--text-main)] hover:bg-black/5 dark:hover:bg-white/10 active:bg-black/10 dark:active:bg-white/15 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--kc-color-focus)] shrink-0 cursor-default select-none",
         className
       )}
       {...props}
@@ -201,7 +201,7 @@ export const SidebarHeader = React.forwardRef<
       ref={ref}
       data-state={open ? "expanded" : "collapsed"}
       className={cn(
-        "flex flex-col gap-2 p-2.5 shrink-0 border-b border-[var(--border-subtle)] transition-all",
+        "flex flex-col gap-2 p-2.5 shrink-0 border-b border-[var(--border-subtle)] transition-[padding,gap] duration-[var(--kc-duration-dialog)] ease-[var(--kc-ease-out-ui)]",
         !open && "items-center justify-center px-1 py-2",
         className
       )}
@@ -242,7 +242,7 @@ export const SidebarFooter = React.forwardRef<
       ref={ref}
       data-state={open ? "expanded" : "collapsed"}
       className={cn(
-        "flex flex-col gap-2 p-2.5 shrink-0 border-t border-[var(--border-subtle)] mt-auto transition-all",
+        "flex flex-col gap-2 p-2.5 shrink-0 border-t border-[var(--border-subtle)] mt-auto transition-[padding,gap] duration-[var(--kc-duration-dialog)] ease-[var(--kc-ease-out-ui)]",
         !open && "items-center justify-center px-1 py-2",
         className
       )}
@@ -311,7 +311,7 @@ export const SidebarSearch = React.forwardRef<
         type="search"
         placeholder={placeholder}
         className={cn(
-          "w-full h-7 pl-8 pr-2.5 text-xs bg-black/5 dark:bg-white/10 text-[var(--text-main)] placeholder-[var(--text-tertiary)] rounded-lg border border-black/5 dark:border-white/5 outline-none transition-all focus:bg-white dark:focus:bg-[#2A2A2E] focus:border-[#007AFF] focus:ring-1 focus:ring-[#007AFF]/30",
+          "w-full h-7 pl-8 pr-2.5 text-xs bg-black/5 dark:bg-white/10 text-[var(--text-main)] placeholder-[var(--text-tertiary)] rounded-[var(--kc-radius-control)] border border-black/5 dark:border-white/5 outline-none transition-[background-color,border-color,box-shadow] duration-[var(--kc-duration-press)] ease-[var(--kc-ease-out-ui)] focus:bg-white dark:focus:bg-[#2A2A2E] focus:border-[var(--kc-color-focus)] focus:ring-1 focus:ring-[var(--kc-color-focus)]/30",
           className
         )}
         {...props}
@@ -470,12 +470,12 @@ export const SidebarMenuButton = React.forwardRef<
         aria-label={typeof children === "string" ? children : undefined}
         onClick={handleClick}
         className={cn(
-          "flex items-center text-left text-xs font-medium transition-all duration-150 cursor-default outline-none select-none",
+          "flex items-center text-left text-xs font-medium transition-[background-color,color,box-shadow] duration-[var(--kc-duration-press)] ease-[var(--kc-ease-out-ui)] cursor-default outline-none select-none",
           open
-            ? "w-full gap-2.5 px-2.5 py-1.5 rounded-lg"
-            : "h-8 w-8 justify-center rounded-lg px-0 shrink-0 mx-auto",
+            ? "w-full gap-2.5 px-2.5 py-1.5 rounded-[var(--kc-radius-control)]"
+            : "h-8 w-8 justify-center rounded-[var(--kc-radius-control)] px-0 shrink-0 mx-auto",
           isActive
-            ? "bg-[var(--accent-primary)] text-white font-semibold shadow-xs"
+            ? "bg-[var(--kc-color-selection)] text-[var(--kc-color-text-primary)] font-semibold shadow-xs"
             : "text-[var(--text-secondary)] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[var(--text-main)] active:bg-black/10 dark:active:bg-white/15",
           className
         )}
@@ -485,7 +485,7 @@ export const SidebarMenuButton = React.forwardRef<
           <span
             className={cn(
               "shrink-0 h-4 w-4 flex items-center justify-center transition-colors",
-              isActive ? "text-white" : "text-[var(--text-tertiary)] group-hover:text-[var(--text-main)]"
+              isActive ? "text-[var(--kc-color-text-primary)]" : "text-[var(--text-tertiary)] group-hover:text-[var(--text-main)]"
             )}
           >
             {icon}
@@ -497,7 +497,7 @@ export const SidebarMenuButton = React.forwardRef<
             className={cn(
               "shrink-0 text-[10px] px-1.5 py-0.5 rounded-full font-semibold",
               isActive
-                ? "bg-white/20 text-white"
+                ? "bg-white/10 text-[var(--kc-color-text-primary)]"
                 : "bg-black/5 dark:bg-white/10 text-[var(--text-secondary)]"
             )}
           >
@@ -560,9 +560,9 @@ export const SidebarMenuSubButton = React.forwardRef<
     ref={ref}
     type="button"
     className={cn(
-      "w-full flex items-center gap-2 px-2 py-1 rounded-md text-left text-xs transition-colors outline-none select-none",
+      "w-full flex items-center gap-2 px-2 py-1 rounded-[var(--kc-radius-control)] text-left text-xs transition-colors outline-none select-none",
       active
-        ? "text-[#007AFF] font-semibold bg-black/5 dark:bg-white/10"
+        ? "text-[var(--kc-color-text-primary)] font-semibold bg-[var(--kc-color-selection)]"
         : "text-[var(--text-secondary)] hover:text-[var(--text-main)] hover:bg-black/5 dark:hover:bg-white/5",
       className
     )}
@@ -587,7 +587,7 @@ export const SidebarSeparator = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "h-[1px] bg-[var(--border-subtle)] my-1 transition-all",
+        "h-[1px] bg-[var(--border-subtle)] my-1 transition-[width] duration-[var(--kc-duration-dialog)] ease-[var(--kc-ease-out-ui)]",
         open ? "w-full" : "w-6 mx-auto",
         className
       )}

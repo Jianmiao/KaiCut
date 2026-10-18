@@ -1,0 +1,54 @@
+ffmpeg version n7.1 Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 16.2.0 (Rev4, Built by MSYS2 project)
+  configuration: --prefix=/e/ffmpeg-build/install-n7.1-export --target-os=mingw32 --arch=x86_64 --cross-prefix=x86_64-w64-mingw32- --cc=x86_64-w64-mingw32-gcc --cxx=x86_64-w64-mingw32-g++ --ar=ar --ranlib=ranlib --nm=nm --pkg-config=pkg-config --pkg-config-flags=--static --extra-ldflags=-static --extra-libs='-static-libgcc -static-libstdc++' --disable-gpl --disable-nonfree --disable-version3 --disable-debug --disable-doc --disable-network --disable-autodetect --disable-everything --enable-static --disable-shared --enable-mediafoundation --enable-protocol='file,pipe' --enable-zlib --enable-demuxer='mov,mp3,wav,image2,image2pipe,lavfi' --enable-muxer='image2,image2pipe,mp4,wav,mp3,rawvideo' --enable-decoder='h264,aac,mp3,pcm_s16le,mjpeg,png,wrapped_avframe' --enable-encoder='h264_mf,aac,mjpeg,png,wrapped_avframe,pcm_s16le,rawvideo' --enable-parser='h264,aac,mpegaudio,png' --enable-bsf='h264_mp4toannexb,aac_adtstoasc' --enable-filter='scale,format,thumbnail,showwaves,aresample,anull,atrim,testsrc2,color,anullsrc,trim,setpts,asetpts,fps,setsar,pad,overlay,concat,amix,volume,afade,adelay,apad,aformat,split,asplit' --enable-indev=lavfi --enable-avfilter --enable-runtime-cpudetect
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+Filters:
+  T.. = Timeline support
+  .S. = Slice threading
+  ..C = Command support
+  A = Audio input/output
+  V = Video input/output
+  N = Dynamic number and/or type of input/output
+  | = Source or sink filter
+ T.C adelay            A->A       Delay one or more audio channels.
+ T.C afade             A->A       Fade in/out input audio.
+ ... aformat           A->A       Convert the input audio to one of the specified formats.
+ ..C amix              N->A       Audio mixing.
+ ... anull             A->A       Pass the source unchanged to the output.
+ T.. apad              A->A       Pad audio with silence.
+ ... aresample         A->A       Resample audio data.
+ ..C asetpts           A->A       Set PTS for the output audio frame.
+ ... asplit            A->N       Pass on the audio input to N audio outputs.
+ ... atrim             A->A       Pick one continuous section from the input, drop the rest.
+ T.C volume            A->A       Change input volume.
+ ... anullsrc          |->A       Null audio source, return empty audio frames.
+ ..C crop              V->V       Crop the input video.
+ ... format            V->V       Convert the input video to one of the specified pixel formats.
+ ... fps               V->V       Force constant framerate.
+ TS. hflip             V->V       Horizontally flip the input video.
+ ... null              V->V       Pass the source unchanged to the output.
+ TSC overlay           VV->V      Overlay a video source on top of the input.
+ ... pad               V->V       Pad the input video.
+ TSC rotate            V->V       Rotate the input image.
+ ..C scale             V->V       Scale the input video size and/or convert the image format.
+ ..C setpts            V->V       Set PTS for the output video frame.
+ ... setsar            V->V       Set the pixel sample aspect ratio.
+ ... split             V->N       Pass on the input to N video outputs.
+ TS. thumbnail         V->V       Select the most representative frame in a given sequence of consecutive frames.
+ .S. transpose         V->V       Transpose input video.
+ ... trim              V->V       Pick one continuous section from the input, drop the rest.
+ T.. vflip             V->V       Flip the input video vertically.
+ ..C color             |->V       Provide an uniformly colored input.
+ ... testsrc2          |->V       Generate another test pattern.
+ ..C concat            N->N       Concatenate audio and video streams.
+ ... showwaves         A->V       Convert input audio to a video output.
+ ... abuffer           |->A       Buffer audio frames, and make them accessible to the filterchain.
+ ... buffer            |->V       Buffer video frames, and make them accessible to the filterchain.
+ ... abuffersink       A->|       Buffer audio frames, and make them available to the end of the filter graph.
+ ... buffersink        V->|       Buffer video frames, and make them available to the end of the filter graph.

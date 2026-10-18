@@ -1,7 +1,7 @@
 use chrono::{DateTime, SecondsFormat, Utc};
 use serde::{Deserialize, Serialize};
 use std::{
-    collections::HashSet,
+    collections::{HashMap, HashSet},
     fs::File,
     io::{Read, Write},
     path::{Path, PathBuf},
@@ -11,7 +11,10 @@ use tempfile::NamedTempFile;
 use uuid::Uuid;
 
 pub const MAX_PROJECT_BYTES: u64 = 10 * 1024 * 1024;
-const MAX_SAFE_INTEGER: u64 = 9_007_199_254_740_991;
+pub const MAX_SAFE_INTEGER: u64 = 9_007_199_254_740_991;
+pub const MAX_CLIPS: usize = 10_000;
+/// The fixed primary video lane used by runtime magnet behavior. It is not persisted or configurable.
+pub const PRIMARY_VIDEO_TRACK_ID: &str = "video-1";
 const MAX_MEDIA_REFS: usize = 10_000;
 pub const MEDIA_EXTENSIONS: &[&str] = &["mp4", "mov", "mp3", "wav", "png", "jpg", "jpeg"];
 
@@ -51,6 +54,13 @@ pub struct TimelineClip {
     pub track_id: String,
     pub start_frame: u64,
     pub duration_frames: u64,
+    pub source_in_frame: u64,
+    pub source_duration_frames: u64,
+    /// Audio-only clip fade durations, expressed in the project timebase.
+    #[serde(default)]
+    pub fade_in_frames: u64,
+    #[serde(default)]
+    pub fade_out_frames: u64,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -61,7 +71,14 @@ pub struct TimelineTrack {
     pub kind: TrackKind,
     pub locked: bool,
     pub muted: bool,
+    /// Linear track gain. One is unity gain; the current editor clamps values to 0–1.
+    #[serde(default = "default_track_volume")]
+    pub volume: f32,
     pub clips: Vec<TimelineClip>,
+}
+
+pub fn default_track_volume() -> f32 {
+    1.0
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -86,11 +103,17 @@ pub struct KaicutProject {
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ProjectSession {
     pub project: KaicutProject,
     pub path: Option<String>,
     pub dirty: bool,
     pub status: String,
+    pub revision: u64,
+    pub can_undo: bool,
+    pub can_redo: bool,
+    #[serde(skip)]
+    pub(crate) history: crate::timeline::TimelineHistory,
 }
 
 pub fn timestamp() -> String {
@@ -104,6 +127,10 @@ impl Default for ProjectSession {
             path: None,
             dirty: false,
             status: "就绪 · 新建项目尚未保存".into(),
+            revision: 0,
+            can_undo: false,
+            can_redo: false,
+            history: Default::default(),
         }
     }
 }
@@ -112,7 +139,7 @@ impl KaicutProject {
     pub fn new() -> Self {
         let now = timestamp();
         Self {
-            schema_version: 1,
+            schema_version: 2,
             app_version: env!("CARGO_PKG_VERSION").into(),
             project_id: format!("project-{}", Uuid::new_v4()),
             name: "未命名项目".into(),
@@ -124,7 +151,7 @@ impl KaicutProject {
             },
             media_refs: Vec::new(),
             tracks: [
-                ("video-1", "视频 1", TrackKind::Video),
+                (PRIMARY_VIDEO_TRACK_ID, "视频 1", TrackKind::Video),
                 ("video-2", "视频 2", TrackKind::Video),
                 ("audio-1", "音频 1", TrackKind::Audio),
                 ("audio-2", "音频 2", TrackKind::Audio),
@@ -136,6 +163,7 @@ impl KaicutProject {
                 kind,
                 locked: false,
                 muted: false,
+                volume: default_track_volume(),
                 clips: Vec::new(),
             })
             .collect(),
@@ -143,9 +171,9 @@ impl KaicutProject {
     }
 
     pub fn validate(&self) -> Result<(), String> {
-        if self.schema_version != 1 {
+        if self.schema_version != 2 {
             return Err(format!(
-                "不支持的项目版本：{}（当前仅支持版本 1）",
+                "不支持的项目版本：{}（当前支持版本 2）",
                 self.schema_version
             ));
         }
@@ -163,6 +191,9 @@ impl KaicutProject {
                 > 240.0
         {
             return Err("项目时间基无效：帧率必须大于 0 且不超过 240".into());
+        }
+        if self.max_timeline_frames() < 1 {
+            return Err("项目帧率过低，24 小时内不足一帧".into());
         }
         if self.media_refs.len() > MAX_MEDIA_REFS {
             return Err("项目素材数量超过首版限制（10000 项）".into());
@@ -184,6 +215,12 @@ impl KaicutProject {
                 validate_text(path, "素材路径", 32768)?;
             }
         }
+        let media_by_id: HashMap<_, _> = self
+            .media_refs
+            .iter()
+            .map(|media| (&media.id, media))
+            .collect();
+        let mut clip_ids = HashSet::new();
         let mut track_ids = HashSet::new();
         let mut video_count = 0;
         let mut audio_count = 0;
@@ -193,8 +230,60 @@ impl KaicutProject {
             if !track_ids.insert(&track.id) {
                 return Err("项目中有重复的轨道 ID".into());
             }
-            if !track.clips.is_empty() {
-                return Err("当前骨架版本不能打开已有剪辑片段的项目，避免丢失编辑数据".into());
+            if !track.volume.is_finite() || !(0.0..=1.0).contains(&track.volume) {
+                return Err("音频轨音量必须在 0 到 1 之间".into());
+            }
+            if track.kind != TrackKind::Audio && track.volume != default_track_volume() {
+                return Err("视频轨不能设置音频音量".into());
+            }
+            let mut ranges = Vec::with_capacity(track.clips.len());
+            for clip in &track.clips {
+                validate_text(&clip.id, "片段 ID", 128)?;
+                if !clip_ids.insert(&clip.id) || clip_ids.len() > MAX_CLIPS {
+                    return Err("片段 ID 重复或数量超过 10000 项".into());
+                }
+                let media = media_by_id
+                    .get(&clip.media_id)
+                    .ok_or("片段引用的素材不存在")?;
+                if clip.track_id != track.id || !track_accepts(&track.kind, &media.kind) {
+                    return Err("片段与轨道 ID 或类型不匹配".into());
+                }
+                if [
+                    clip.start_frame,
+                    clip.duration_frames,
+                    clip.source_in_frame,
+                    clip.source_duration_frames,
+                ]
+                .into_iter()
+                .any(|value| value > MAX_SAFE_INTEGER)
+                    || clip.duration_frames == 0
+                    || clip.source_duration_frames == 0
+                    || clip.source_duration_frames > self.max_timeline_frames()
+                    || clip.fade_in_frames > clip.duration_frames
+                    || clip.fade_out_frames > clip.duration_frames
+                    || clip
+                        .fade_in_frames
+                        .checked_add(clip.fade_out_frames)
+                        .is_none_or(|sum| sum > clip.duration_frames)
+                {
+                    return Err("片段时长无效或超过 24 小时限制".into());
+                }
+                let end = clip
+                    .start_frame
+                    .checked_add(clip.duration_frames)
+                    .ok_or("片段时间溢出")?;
+                let source_end = clip
+                    .source_in_frame
+                    .checked_add(clip.duration_frames)
+                    .ok_or("片段源时间溢出")?;
+                if end > self.max_timeline_frames() || source_end > clip.source_duration_frames {
+                    return Err("片段超过源素材时长或 24 小时时间线限制".into());
+                }
+                ranges.push((clip.start_frame, end));
+            }
+            ranges.sort_unstable();
+            if ranges.windows(2).any(|pair| pair[0].1 > pair[1].0) {
+                return Err("同一轨道的片段不能重叠".into());
             }
             match track.kind {
                 TrackKind::Video => video_count += 1,
@@ -205,6 +294,31 @@ impl KaicutProject {
             return Err("当前版本仅支持 2 条视频轨道和 2 条音频轨道".into());
         }
         Ok(())
+    }
+
+    pub fn max_timeline_frames(&self) -> u64 {
+        86_400 * u64::from(self.timebase.fps_numerator)
+            / u64::from(self.timebase.fps_denominator.max(1))
+    }
+}
+
+pub fn track_accepts(track: &TrackKind, media: &MediaKind) -> bool {
+    matches!(
+        (track, media),
+        (TrackKind::Video, MediaKind::Video | MediaKind::Image)
+            | (TrackKind::Audio, MediaKind::Audio)
+    )
+}
+
+impl ProjectSession {
+    pub fn replace_project(&mut self, project: KaicutProject, path: Option<String>, dirty: bool) {
+        self.project = project;
+        self.path = path;
+        self.dirty = dirty;
+        self.history = Default::default();
+        self.can_undo = false;
+        self.can_redo = false;
+        self.revision += 1;
     }
 }
 
@@ -224,12 +338,31 @@ pub fn parse_project(bytes: &[u8]) -> Result<KaicutProject, String> {
     }
     let value: serde_json::Value =
         serde_json::from_slice(bytes).map_err(|error| format!("项目文件不是有效 JSON：{error}"))?;
-    if value
+    parse_project_value(value)
+}
+
+pub(crate) fn parse_project_value(mut value: serde_json::Value) -> Result<KaicutProject, String> {
+    match value
         .get("schemaVersion")
         .and_then(serde_json::Value::as_u64)
-        != Some(1)
     {
-        return Err("不支持的项目版本；当前仅支持 schemaVersion 1".into());
+        Some(1) => {
+            let tracks = value
+                .get("tracks")
+                .and_then(serde_json::Value::as_array)
+                .ok_or("项目轨道结构无效")?;
+            if tracks.iter().any(|track| {
+                track
+                    .get("clips")
+                    .and_then(serde_json::Value::as_array)
+                    .is_none_or(|clips| !clips.is_empty())
+            }) {
+                return Err("版本 1 仅允许升级空轨道，不能迁移已有剪辑片段".into());
+            }
+            value["schemaVersion"] = 2.into();
+        }
+        Some(2) => {}
+        _ => return Err("不支持的项目版本；当前支持 schemaVersion 1（空轨迁移）和 2".into()),
     }
     let project: KaicutProject = serde_json::from_value(value)
         .map_err(|error| format!("项目结构无效或含当前版本不支持的字段：{error}"))?;
@@ -400,7 +533,7 @@ mod tests {
         assert!(parse_project(b"{broken").is_err());
         let original = serde_json::to_value(KaicutProject::new()).unwrap();
         let mut future = original.clone();
-        future["schemaVersion"] = 2.into();
+        future["schemaVersion"] = 3.into();
         assert!(
             parse_project(&serde_json::to_vec(&future).unwrap())
                 .unwrap_err()
@@ -413,6 +546,7 @@ mod tests {
         unknown_nested["timebase"]["dropFrame"] = true.into();
         assert!(parse_project(&serde_json::to_vec(&unknown_nested).unwrap()).is_err());
         let mut clips = original;
+        clips["schemaVersion"] = 1.into();
         clips["tracks"][0]["clips"] = serde_json::json!([{"id":"clip-1","mediaId":"media-1","trackId":"video-1","startFrame":0,"durationFrames":30}]);
         assert!(
             parse_project(&serde_json::to_vec(&clips).unwrap())
@@ -430,6 +564,19 @@ mod tests {
         project.tracks[1].id = project.tracks[0].id.clone();
         assert!(project.validate().is_err());
         assert!(parse_project(&vec![b' '; MAX_PROJECT_BYTES as usize + 1]).is_err());
+    }
+
+    #[test]
+    fn primary_video_track_is_a_fixed_runtime_convention() {
+        let project = KaicutProject::new();
+        let primary = project
+            .tracks
+            .iter()
+            .find(|track| track.id == PRIMARY_VIDEO_TRACK_ID)
+            .expect("new projects must contain the primary video track");
+        assert_eq!(primary.kind, TrackKind::Video);
+        assert_eq!(PRIMARY_VIDEO_TRACK_ID, "video-1");
+        assert_eq!(project.schema_version, 2);
     }
 
     #[test]

@@ -1,0 +1,7 @@
+.inspector-clip-editing { margin-bottom: var(--kc-space-4); padding-bottom: var(--kc-space-4); border-bottom: 1px solid var(--kc-color-divider); }
+.inspector-add-clip { width: 100%; margin-top: var(--kc-space-2); }
+.inspector-edit-hint { margin: var(--kc-space-2) 0; color: var(--kc-color-text-tertiary); font-size: var(--kc-font-size-caption); line-height: var(--kc-line-height-caption); }
+.inspector-edit-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(88px, 1fr); gap: var(--kc-space-2); align-items: center; margin-bottom: var(--kc-space-4); }
+.inspector-edit-form label { color: var(--kc-color-text-secondary); font-size: var(--kc-font-size-caption); }
+.inspector-edit-form input { font-family: var(--kc-font-mono); font-variant-numeric: tabular-nums; }
+.inspector-edit-submit { grid-column: 1 / -1; justify-self: end; }

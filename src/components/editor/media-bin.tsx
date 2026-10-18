@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FileAudio, FileImage, FileVideo, FolderOpen, Grid2X2, List, Plus, Search, Upload } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -32,9 +32,9 @@ export function MediaBin() {
     <SidebarProvider className="media-bin-provider" width="w-full"><Sidebar collapsible={false} className="panel-shell media-bin" aria-label="素材库">
       <div className="panel-heading">
         <div>
-          <h2>素材库 <span className="count-badge">{media.length}</span></h2>
+          <h2 className="library-heading"><FolderOpen size={16} strokeWidth={1.6} aria-hidden="true" />素材<span className="count-badge">{media.length}</span></h2>
         </div>
-        <Button variant="ghost" size="icon" aria-label="添加媒体文件" title="导入媒体" className="panel-action" disabled={busy} onClick={importFiles}><Plus className="icon-sm" /></Button>
+        <Button variant="secondary" size="sm" aria-label="添加媒体文件" title="导入媒体" className="media-import-action" disabled={busy} onClick={importFiles}><Plus className="icon-sm" />导入</Button>
       </div>
       <Tabs value={view} onValueChange={setView} className="media-tabs">
       <div className="media-toolbar">
@@ -62,10 +62,10 @@ export function MediaBin() {
       {['list', 'grid'].map((mode) => <TabsContent value={mode} key={mode} className={`media-list ${mode === 'grid' ? 'media-list-grid' : ''}`}>
         {visibleMedia.length === 0 ? (
           <div className="empty-state media-empty">
-            <FolderOpen className="library-empty-symbol" strokeWidth={1} aria-hidden="true" />
-            <strong>{query ? '没有匹配素材' : '项目中还没有素材'}</strong>
-            <p>{query ? '尝试其他文件名' : '添加视频、音频或图片'}</p>
-            {!query && <Button variant="secondary" className="import-button" disabled={busy} onClick={importFiles}><Upload size={14} strokeWidth={1.6} />导入媒体</Button>}
+            {query ? <><Search className="library-empty-symbol" strokeWidth={1.6} aria-hidden="true" /><strong>没有匹配素材</strong><p>尝试其他文件名</p></> : <>
+              <Button variant="secondary" className="media-import-tile" disabled={busy} onClick={importFiles}><span className="media-import-symbol"><Upload size={20} strokeWidth={1.6} /></span><span>导入媒体</span><small>视频、音频、图片</small></Button>
+              <p className="media-local-hint">文件保留在原位置</p>
+            </>}
           </div>
         ) : visibleMedia.map((asset) => (
           <MediaCard key={asset.id} asset={asset} grid={mode === 'grid'} />
@@ -80,11 +80,37 @@ export function MediaBin() {
 function MediaCard({ asset, grid }: { asset: MediaAsset; grid: boolean }) {
   const select = useProjectStore((state) => state.selectMedia)
   const selected = useProjectStore((state) => state.selectedMediaId === asset.id)
+  const ensureThumbnail = useProjectStore((state) => state.ensureThumbnail)
+  const projectId = useProjectStore((state) => state.project.projectId)
+  const cardRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card || !isDesktop || asset.kind === 'audio') return
+    if (typeof IntersectionObserver === 'undefined') { ensureThumbnail(asset.id); return }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) ensureThumbnail(asset.id)
+    }, { root: card.closest('.media-list'), rootMargin: '80px' })
+    observer.observe(card)
+    return () => observer.disconnect()
+  }, [projectId, asset.id, asset.kind, asset.sourcePath, asset.size, asset.lastModified, ensureThumbnail])
+  const thumbnail = asset.thumbnail
+  const image = thumbnail?.state === 'ready' && asset.linkState === 'online' ? thumbnail.dataUrl : undefined
+  const add = () => {
+    const state = useProjectStore.getState()
+    if (!isDesktop || state.busy || asset.linkState !== 'online' || asset.probe?.state !== 'ready') return
+    const track = state.project.tracks.find((item) => item.kind === (asset.kind === 'audio' ? 'audio' : 'video') && !item.locked)
+    if (track) void state.editTimeline({ type: 'add', mediaId: asset.id, trackId: track.id })
+    else state.setStatusMessage('没有可用的同类型轨道，请先解锁轨道')
+  }
   return (
-    <button type="button" className={`media-card ${grid ? 'media-card-grid' : ''}`} aria-pressed={selected} onClick={() => select(asset.id)} aria-label={`${asset.name}，${formatBytes(asset.size)}`}>
+    <button ref={cardRef} type="button" className={`media-card ${grid ? 'media-card-grid' : ''}`} aria-pressed={selected} onClick={() => select(asset.id)} onDoubleClick={add} title="双击追加到可用轨道；也可在检查器选择目标轨道" aria-label={`${asset.name}，${formatBytes(asset.size)}${asset.linkState === 'missing' ? '，素材已离线' : asset.linkState === 'changed' ? '，素材已更改' : ''}`}>
       <div className="media-thumb">
-        {asset.objectUrl ? <img src={asset.objectUrl} alt="" /> : <MediaIcon kind={asset.kind} />}
+        {image ? <img className="media-thumbnail-image" src={image} alt="" draggable={false} /> : <MediaIcon kind={asset.kind} />}
         <span className="media-extension">{asset.extension.toUpperCase()}</span>
+        {thumbnail?.state === 'loading' && <span className="media-link-badge">读取中</span>}
+        {thumbnail?.state === 'failed' && <span className="media-link-badge" title={thumbnail.error}>预览失败</span>}
+        {asset.linkState === 'missing' && <span className="media-link-badge">离线</span>}
+        {asset.linkState === 'changed' && <span className="media-link-badge">已更改</span>}
       </div>
       <div className="media-copy">
         <strong title={asset.name}>{asset.name}</strong>

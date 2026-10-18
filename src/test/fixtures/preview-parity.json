@@ -1,0 +1,61 @@
+{
+  "description": "Shared preview/export oracle: opaque upper clips, lower-video resume, source trims, audio fades, muted tail and 30000/1001 fps.",
+  "durationFrames": 120,
+  "project": {
+    "schemaVersion": 2,
+    "appVersion": "0.1.0",
+    "projectId": "project-preview-parity",
+    "name": "Preview and export parity",
+    "createdAt": "2026-10-16T00:00:00.000Z",
+    "updatedAt": "2026-10-16T00:00:00.000Z",
+    "timebase": { "fpsNumerator": 30000, "fpsDenominator": 1001 },
+    "mediaRefs": [
+      { "id": "image", "name": "Transparent.png", "kind": "image", "extension": "png", "size": 1, "lastModified": 0, "sourcePath": "C:\\fixtures\\transparent.png" },
+      { "id": "upper", "name": "Upper.mp4", "kind": "video", "extension": "mp4", "size": 1, "lastModified": 0, "sourcePath": "C:\\fixtures\\upper.mp4" },
+      { "id": "lower", "name": "Lower.mp4", "kind": "video", "extension": "mp4", "size": 1, "lastModified": 0, "sourcePath": "C:\\fixtures\\lower.mp4" },
+      { "id": "music", "name": "Music.wav", "kind": "audio", "extension": "wav", "size": 1, "lastModified": 0, "sourcePath": "C:\\fixtures\\music.wav" },
+      { "id": "muted", "name": "Muted.wav", "kind": "audio", "extension": "wav", "size": 1, "lastModified": 0, "sourcePath": "C:\\fixtures\\muted.wav" }
+    ],
+    "tracks": [
+      {
+        "id": "video-1", "name": "Upper", "kind": "video", "locked": false, "muted": false, "volume": 1,
+        "clips": [
+          { "id": "image-clip", "mediaId": "image", "trackId": "video-1", "startFrame": 30, "durationFrames": 30, "sourceInFrame": 0, "sourceDurationFrames": 30 },
+          { "id": "upper-clip", "mediaId": "upper", "trackId": "video-1", "startFrame": 75, "durationFrames": 15, "sourceInFrame": 24, "sourceDurationFrames": 90 }
+        ]
+      },
+      {
+        "id": "video-2", "name": "Lower", "kind": "video", "locked": false, "muted": false, "volume": 1,
+        "clips": [
+          { "id": "lower-clip", "mediaId": "lower", "trackId": "video-2", "startFrame": 0, "durationFrames": 100, "sourceInFrame": 12, "sourceDurationFrames": 150 }
+        ]
+      },
+      {
+        "id": "audio-1", "name": "Music", "kind": "audio", "locked": false, "muted": false, "volume": 0.6,
+        "clips": [
+          { "id": "music-clip", "mediaId": "music", "trackId": "audio-1", "startFrame": 15, "durationFrames": 90, "sourceInFrame": 9, "sourceDurationFrames": 120, "fadeInFrames": 15, "fadeOutFrames": 30 }
+        ]
+      },
+      {
+        "id": "audio-2", "name": "Muted tail", "kind": "audio", "locked": false, "muted": true, "volume": 1,
+        "clips": [
+          { "id": "muted-clip", "mediaId": "muted", "trackId": "audio-2", "startFrame": 0, "durationFrames": 120, "sourceInFrame": 0, "sourceDurationFrames": 120 }
+        ]
+      }
+    ]
+  },
+  "frames": [
+    { "frame": 0, "visual": { "clipId": "lower-clip", "sourceSeconds": 0.4004 }, "audio": [] },
+    { "frame": 15, "visual": { "clipId": "lower-clip", "sourceSeconds": 0.9009 }, "audio": [{ "clipId": "music-clip", "sourceSeconds": 0.3003, "gain": 0 }] },
+    { "frame": 30, "visual": { "clipId": "image-clip", "sourceSeconds": 0 }, "audio": [{ "clipId": "music-clip", "sourceSeconds": 0.8008, "gain": 0.6 }] },
+    { "frame": 59, "visual": { "clipId": "image-clip", "sourceSeconds": 0.9676333333333333 }, "audio": [{ "clipId": "music-clip", "sourceSeconds": 1.7684333333333333, "gain": 0.6 }] },
+    { "frame": 60, "visual": { "clipId": "lower-clip", "sourceSeconds": 2.4024 }, "audio": [{ "clipId": "music-clip", "sourceSeconds": 1.8018, "gain": 0.6 }] },
+    { "frame": 75, "visual": { "clipId": "upper-clip", "sourceSeconds": 0.8008 }, "audio": [{ "clipId": "music-clip", "sourceSeconds": 2.3023, "gain": 0.58 }] },
+    { "frame": 89, "visual": { "clipId": "upper-clip", "sourceSeconds": 1.2679333333333333 }, "audio": [{ "clipId": "music-clip", "sourceSeconds": 2.7694333333333333, "gain": 0.3 }] },
+    { "frame": 90, "visual": { "clipId": "lower-clip", "sourceSeconds": 3.4034 }, "audio": [{ "clipId": "music-clip", "sourceSeconds": 2.8028, "gain": 0.28 }] },
+    { "frame": 100, "visual": null, "audio": [{ "clipId": "music-clip", "sourceSeconds": 3.1364666666666667, "gain": 0.08 }] },
+    { "frame": 104, "visual": null, "audio": [{ "clipId": "music-clip", "sourceSeconds": 3.2699333333333333, "gain": 0 }] },
+    { "frame": 105, "visual": null, "audio": [] },
+    { "frame": 120, "visual": null, "audio": [] }
+  ]
+}

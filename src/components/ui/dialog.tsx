@@ -53,11 +53,11 @@ const Dialog: React.FC<DialogProps> = ({
   if (!open || typeof document === 'undefined') return null
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 p-4"
+    <div className="kc-dialog-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/35 p-4"
       onClick={(event) => { if (event.target === event.currentTarget) close() }}>
       <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby={`${id}-title`}
         aria-describedby={description ? `${id}-description` : undefined} aria-busy={confirming || undefined} tabIndex={-1}
-        className={cn('relative max-h-[calc(100dvh-32px)] w-full max-w-md overflow-y-auto rounded-[var(--kc-radius-dialog)] border border-[var(--kc-color-border)] bg-[var(--kc-color-content)] p-5 text-[var(--kc-color-text-primary)] shadow-2xl', className)}>
+        className={cn('kc-dialog-panel relative max-h-[calc(100dvh-32px)] w-full max-w-md overflow-y-auto rounded-[var(--kc-radius-dialog)] border border-[var(--kc-color-border)] bg-[var(--kc-color-content)] p-5 text-[var(--kc-color-text-primary)] shadow-[var(--kc-shadow-dialog)]', className)}>
         <Button variant="ghost" size="icon" disabled={confirming} onClick={close}
           className="absolute right-2 top-2" aria-label="关闭对话框"><X className="h-4 w-4" aria-hidden="true" /></Button>
         <div className="flex items-start gap-3.5 pr-6">

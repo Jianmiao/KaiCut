@@ -13,5 +13,12 @@ Thumbs.db
 /apple-web-design-skill/
 /macos-for-shadcn/
 /fu-liquiglass-skill/
+# Independent local analysis tool, never included in KaiCut source or packages.
+/rea/
+/rea-rea-agents-6.5.0/
 /windows-native/bin/
 /windows-native/obj/
+
+# Prebuilt FFmpeg sidecars are platform artifacts, not source files. Build them
+# locally from the recorded configuration when a development or release binary is needed.
+/src-tauri/binaries/*.exe

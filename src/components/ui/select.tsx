@@ -93,7 +93,7 @@ const Select: React.FC<SelectProps> = ({ options, value: controlledValue, defaul
       }}>
       {options.map((option) => <button key={option.value} type="button" role="option" aria-selected={option.value === selectedValue} aria-label={option.label}
         disabled={option.disabled} tabIndex={-1} onClick={() => handleSelect(option.value)}
-        className={cn('flex min-h-8 w-full cursor-default select-none items-center justify-between rounded-lg px-2.5 text-sm transition-colors duration-[var(--kc-duration-press)] focus-visible:outline-2 focus-visible:outline-[var(--kc-color-focus)] disabled:cursor-not-allowed disabled:opacity-50',
+        className={cn('flex min-h-8 w-full cursor-default select-none items-center justify-between rounded-[var(--kc-radius-control)] px-2.5 text-sm transition-colors duration-[var(--kc-duration-press)] focus-visible:outline-2 focus-visible:outline-[var(--kc-color-focus)] disabled:cursor-not-allowed disabled:opacity-50',
           option.value === selectedValue ? 'bg-[var(--kc-color-selection)] font-medium text-[var(--kc-color-text-primary)]' : 'text-[var(--kc-color-text-primary)] enabled:hover:bg-[var(--kc-color-content-muted)]')}>
         <span className="truncate">{option.label}</span>
         {option.value === selectedValue && <Check className="ml-2 h-3.5 w-3.5 shrink-0" aria-hidden="true" />}

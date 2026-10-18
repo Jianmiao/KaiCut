@@ -28,11 +28,13 @@ export function useApplyPreferences() {
           .then((result) => {
             if (!active || currentRevision !== revision) return
             root.dataset.nativeMaterial = result.material
+            if (result.material === 'solid') root.dataset.transparency = 'off'
             root.dataset.materialReason = result.message
           })
           .catch(() => {
             if (!active || currentRevision !== revision) return
             root.dataset.nativeMaterial = 'solid'
+            root.dataset.transparency = 'off'
             root.dataset.materialReason = '原生材质不可用，使用实色'
           })
       }

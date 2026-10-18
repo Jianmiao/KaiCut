@@ -1,99 +1,73 @@
 :root {
-  --app-bg: #EAEAEA;
-  --window-bg: rgba(255, 255, 255, 0.78);
-  --sidebar-bg: rgba(240, 240, 243, 0.65);
-  --header-bg: rgba(246, 246, 248, 0.82);
-  --border-color: rgba(0, 0, 0, 0.12);
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --text-main: #1D1D1F;
-  --text-secondary: #6E6E73;
-  --text-tertiary: #86868B;
-  --accent-primary: #007AFF;
-  --accent-glow: rgba(0, 122, 255, 0.25);
-  --card-bg: rgba(255, 255, 255, 0.88);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --input-bg: rgba(255, 255, 255, 0.95);
-  --popover-bg: rgba(255, 255, 255, 0.92);
-  --item-hover: rgba(0, 0, 0, 0.05);
-  --shadow-window: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  --shadow-popover: 0 10px 30px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  --code-bg: #F5F6F8;
-  --code-text: #1D1D1F;
-  --terminal-bg: #EFEFF4;
+  --app-bg: var(--kc-color-canvas);
+  --window-bg: var(--kc-color-content);
+  --sidebar-bg: var(--kc-color-sidebar);
+  --header-bg: var(--kc-color-toolbar-fallback);
+  --border-color: var(--kc-color-border);
+  --border-subtle: var(--kc-color-divider);
+  --text-main: var(--kc-color-text-primary);
+  --text-secondary: var(--kc-color-text-secondary);
+  --text-tertiary: var(--kc-color-text-tertiary);
+  --accent-primary: var(--kc-color-accent);
+  --accent-glow: rgb(0 102 204 / 24%);
+  --card-bg: var(--kc-color-content);
+  --card-border: var(--kc-color-divider);
+  --input-bg: var(--kc-color-input);
+  --popover-bg: var(--kc-color-content);
+  --item-hover: var(--kc-color-content-muted);
+  --shadow-window: none;
+  --shadow-popover: var(--kc-shadow-popover);
+  --code-bg: var(--kc-color-content);
+  --code-text: var(--kc-color-text-primary);
+  --terminal-bg: var(--kc-color-viewer);
 }
 
-.dark, [data-theme="dark"], :root[data-theme="dark"] {
-  --app-bg: #121214;
-  --window-bg: rgba(30, 30, 34, 0.82);
-  --sidebar-bg: rgba(24, 24, 28, 0.72);
-  --header-bg: rgba(35, 35, 40, 0.85);
-  --border-color: rgba(255, 255, 255, 0.12);
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --text-main: #F5F5F7;
-  --text-secondary: #98989D;
-  --text-tertiary: #6E6E73;
-  --accent-primary: #0A84FF;
-  --accent-glow: rgba(10, 132, 255, 0.3);
-  --card-bg: rgba(38, 38, 44, 0.88);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --input-bg: rgba(20, 20, 24, 0.85);
-  --popover-bg: rgba(36, 36, 42, 0.92);
-  --item-hover: rgba(255, 255, 255, 0.08);
-  --shadow-window: 0 25px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.12);
-  --shadow-popover: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.12);
-  --code-bg: #18181A;
-  --code-text: #E2E8F0;
-  --terminal-bg: #1A1A1E;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]):not(.light) {
-    --app-bg: #121214;
-    --window-bg: rgba(30, 30, 34, 0.82);
-    --sidebar-bg: rgba(24, 24, 28, 0.72);
-    --header-bg: rgba(35, 35, 40, 0.85);
-    --border-color: rgba(255, 255, 255, 0.12);
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --text-main: #F5F5F7;
-    --text-secondary: #98989D;
-    --text-tertiary: #6E6E73;
-    --accent-primary: #0A84FF;
-    --accent-glow: rgba(10, 132, 255, 0.3);
-    --card-bg: rgba(38, 38, 44, 0.88);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --input-bg: rgba(20, 20, 24, 0.85);
-    --popover-bg: rgba(36, 36, 42, 0.92);
-    --item-hover: rgba(255, 255, 255, 0.08);
-    --shadow-window: 0 25px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.12);
-    --shadow-popover: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.12);
-    --code-bg: #18181A;
-    --code-text: #E2E8F0;
-    --terminal-bg: #1A1A1E;
-  }
+:root[data-theme="dark"], :root.dark, .dark {
+  --app-bg: var(--kc-color-canvas);
+  --window-bg: var(--kc-color-content);
+  --sidebar-bg: var(--kc-color-sidebar);
+  --header-bg: var(--kc-color-toolbar-fallback);
+  --border-color: var(--kc-color-border);
+  --border-subtle: var(--kc-color-divider);
+  --text-main: var(--kc-color-text-primary);
+  --text-secondary: var(--kc-color-text-secondary);
+  --text-tertiary: var(--kc-color-text-tertiary);
+  --accent-primary: var(--kc-color-accent);
+  --accent-glow: rgb(0 102 204 / 24%);
+  --card-bg: var(--kc-color-content);
+  --card-border: var(--kc-color-divider);
+  --input-bg: var(--kc-color-input);
+  --popover-bg: var(--kc-color-content);
+  --item-hover: var(--kc-color-content-muted);
+  --shadow-window: none;
+  --shadow-popover: var(--kc-shadow-popover);
+  --code-bg: var(--kc-color-content);
+  --code-text: var(--kc-color-text-primary);
+  --terminal-bg: var(--kc-color-viewer);
 }
 
 .macos-glass {
   background: var(--window-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(var(--kc-glass-blur)) saturate(var(--kc-glass-saturation));
+  -webkit-backdrop-filter: blur(var(--kc-glass-blur)) saturate(var(--kc-glass-saturation));
 }
 
 .macos-sidebar {
   background: var(--sidebar-bg);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(var(--kc-glass-blur)) saturate(var(--kc-glass-saturation));
+  -webkit-backdrop-filter: blur(var(--kc-glass-blur)) saturate(var(--kc-glass-saturation));
 }
 
 .macos-header {
   background: var(--header-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(var(--kc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--kc-glass-blur));
 }
 
 .macos-popover {
   background: var(--popover-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(var(--kc-glass-blur)) saturate(var(--kc-glass-saturation));
+  -webkit-backdrop-filter: blur(var(--kc-glass-blur)) saturate(var(--kc-glass-saturation));
   box-shadow: var(--shadow-popover);
 }
 
@@ -108,13 +82,13 @@
   background: var(--input-bg);
   border: 1px solid var(--border-color);
   color: var(--text-main);
-  transition: all 0.15s ease-in-out;
+  transition: border-color var(--kc-duration-press), background-color var(--kc-duration-press), box-shadow var(--kc-duration-press);
 }
 
 .macos-input:focus-visible {
   outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  border-color: var(--kc-color-focus);
+  box-shadow: 0 0 0 var(--kc-focus-ring-width) rgb(112 167 255 / 24%);
 }
 
 .macos-window-shadow {

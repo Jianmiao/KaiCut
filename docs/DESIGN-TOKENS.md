@@ -48,7 +48,7 @@
 | `--kc-color-preview-controls` | `rgb(26 26 28 / 82%)` | 预览底部浮动控制条，无模糊、不占独立行；减少透明度时用 viewer 实色 |
 | `--kc-color-waveform` | `#70A7FF` | 波形 |
 | `--kc-color-playhead` | `#FFFFFF` | 当前时间位置的1px细线；不使用三角或红色填充 |
-| `--kc-color-timeline-grid` | `rgba(255, 255, 255, 0.06)` | 每1秒次刻度、5秒主刻度；标尺文字继续用等宽字体 |
+| `--kc-color-timeline-grid` | `rgba(255, 255, 255, 0.06)` | 历史token名称，仅用于顶部标尺刻度；轨道画布不绘制网格 |
 | `--kc-color-track-header` | `#202022` | 与空轨道、时间线实底同色 |
 | `--kc-color-clip-video` | `#3D72B8` | 视频片段填充 |
 | `--kc-color-clip-audio` | `#2F5E70` | 音频片段填充；低饱和蓝灰，与视频保持同一色系 |
@@ -104,11 +104,12 @@ Accent 是按钮填充色，不能在深色底上直接当正文文字色。文�
 | `--kc-track-header-width` | `96px` | 统一轨道头宽度；仅保留类型图标、锁定和隐藏 |
 | `--kc-timeline-tool-row-height` | `36px` | 时间线独立工具行 |
 | `--kc-timeline-ruler-row-height` | `24px` | 紧凑时间标尺行 |
-| `--kc-sidebar-width` | `240px` | 唯一默认素材区宽度 |
-| `--kc-inspector-width` | `280px` | 唯一默认检查器宽度 |
-| `--kc-sidebar-width-range` | `180–360px` | 素材区拖拽范围 |
+| `--kc-sidebar-width` | `320px` | 剪映式三分区默认素材区宽度 |
+| `--kc-inspector-width` | `300px` | 唯一默认检查器宽度 |
+| `--kc-sidebar-width-range` | `180–460px` | 素材区拖拽范围；空间不足时为播放器保留300px |
 | `--kc-inspector-width-range` | `220–380px` | 检查器拖拽范围 |
-| `--kc-timeline-height-ratio` | `30%` | 时间线初始工作区占比 |
+| 工作台外边距/区域间距 | `var(--kc-space-2)` / `8px` | 与面板分隔器命中宽度统一 |
+| 时间线默认高度 | `300px` | 可调220–520px，代码常量 DEFAULT_WORKSPACE.timeline |
 | `--kc-panel-padding` | `var(--kc-space-4)` | 面板内边距 |
 | `--kc-control-height-compact` | `32px` | 常规桌面控件高度 |
 | `--kc-control-height-comfortable` | `40px` | 大字号/舒适密度控件高度 |
@@ -145,7 +146,7 @@ Accent 是按钮填充色，不能在深色底上直接当正文文字色。文�
 
 ## 材质与模糊
 
-原生材质扩展：`--kc-native-glass-tint` 固定 `rgb(42 42 44 / 85%)`，叠在系统材质上，保留轻微透色；原生半径由系统管理。时间线主/次/辅助文字为 #F5F5F7 / #C7C7CC / #B0B0B8；空轨道与轨道头统一 #202022，轨道头96px、行高34px，工具行36px，播放头为1px白色细线。视频缩略条和音频波形只使用低饱和蓝灰色占位，不代表真实 clips 数据。
+原生材质扩展：`--kc-native-glass-tint` 固定 `rgb(42 42 44 / 85%)`，原生半径由系统管理。时间线主/次/辅助文字为 #F5F5F7 / #C7C7CC / #B0B0B8；空轨道与轨道头统一 #202022，头宽96px、行高34px、工具行36px、播放头1px白线。空项目不显示伪片段或假波形；媒体库中的首帧与图片必须来自真实解码。
 
 原生材质 API 失败、系统透明效果关闭、高对比度或应用关闭透明度时，根背景与控制层回到实色；只有确认 native 成功才移除不透明祖先背景。窗口主题同步，重复聚焦不会重复重建相同材质。Windows Acrylic 与 macOS Sidebar 材质各自验证，不把其模糊半径冒称为CSS14px。
 
@@ -177,6 +178,7 @@ Accent 是按钮填充色，不能在深色底上直接当正文文字色。文�
 | `--kc-ease-out-ui` | `cubic-bezier(0.23, 1, 0.32, 1)` | 普通 UI 进入/退出 |
 | `--kc-ease-in-out-ui` | `cubic-bezier(0.77, 0, 0.175, 1)` | 两个可见位置之间 |
 | `--kc-ease-drawer-ui` | `cubic-bezier(0.32, 0.72, 0, 1)` | 抽屉 |
+| `--kc-ease-spring-ui` | `cubic-bezier(0.22, 1.08, 0.36, 1)` | 原生感的短促回弹，仅用于低频弹层 |
 | `--kc-ease-linear` | `linear` | 恒速显示 |
 
 减少动态效果时移除位移、缩放和弹性，仅保留必要的短反馈。高频编辑不能等待动画；不连续动画化 blur、不使用 `transition: all`。这些是项目默认值，不是 Apple 官方定值。

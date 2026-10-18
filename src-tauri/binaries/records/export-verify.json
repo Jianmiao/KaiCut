@@ -1,0 +1,9 @@
+{
+  "decodedFirstFrameBytes": 230400,
+  "decodedFirstFrameMaxChannel": 2,
+  "decodedFirstFrameMeanChannel": 0.0070703125,
+  "leadingSilenceRmsPcm16": 0.0,
+  "activeAudioRmsPcm16": 2212.6267040038256,
+  "trailingSilenceRmsPcm16": 0.0,
+  "passed": true
+}

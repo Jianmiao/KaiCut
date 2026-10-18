@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react'
-import { Check, CheckCircle2, ChevronDown, Copy, FolderOpen, Keyboard, Minus, PanelsTopLeft, Plus, Save, Settings2, Square, Upload, X } from 'lucide-react'
+import { Check, CheckCircle2, ChevronDown, Clock3, Copy, FolderOpen, Keyboard, Minus, PanelsTopLeft, Plus, Save, Settings2, Square, Upload, X } from 'lucide-react'
 import { getCurrentWindow } from '@tauri-apps/api/window'
+import { useShallow } from 'zustand/react/shallow'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
@@ -11,7 +12,11 @@ import '@/styles/toolbar.css'
 interface Props { onExport: () => void; onSettings: () => void; showLibrary: boolean; showInspector: boolean; onToggleLibrary: () => void; onToggleInspector: () => void; onResetLayout: () => void }
 export function Toolbar({ onExport, onSettings, showLibrary, showInspector, onToggleLibrary, onToggleInspector, onResetLayout }: Props) {
   const picker = useRef<HTMLInputElement>(null)
-  const { project, projectPath, isDirty, busy, newProject, openProject, openProjectFile, saveProject, setProjectName, setStatusMessage } = useProjectStore()
+  const { project, projectPath, isDirty, busy, recentProjects = [], newProject, openProject, openRecentProject, openProjectFile, saveProject, setProjectName, setStatusMessage } = useProjectStore(useShallow((state) => ({
+    project: state.project, projectPath: state.projectPath, isDirty: state.isDirty, busy: state.busy, recentProjects: state.recentProjects,
+    newProject: state.newProject, openProject: state.openProject, openRecentProject: state.openRecentProject,
+    openProjectFile: state.openProjectFile, saveProject: state.saveProject, setProjectName: state.setProjectName, setStatusMessage: state.setStatusMessage,
+  })))
   const [draftName, setDraftName] = useState('')
   const [renameOpen, setRenameOpen] = useState(false)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
@@ -22,10 +27,17 @@ export function Toolbar({ onExport, onSettings, showLibrary, showInspector, onTo
   const open = () => { if (isDesktop) void openProject(); else picker.current?.click() }
   const saveStatus = busy ? '处理中…' : isDirty ? '未保存' : projectPath ? '已保存' : '新项目'
   const shortcuts = [
-    { label: '新建项目', key: 'N' },
-    { label: '打开项目', key: 'O' },
-    { label: '保存项目', key: 'S' },
+    { label: '新建项目', key: `${mod}N` },
+    { label: '打开项目', key: `${mod}O` },
+    { label: '保存项目', key: `${mod}S` },
+    { label: '分割所选片段', key: `${mod}B` },
+    { label: '撤销时间线操作', key: `${mod}Z` },
+    { label: '重做时间线操作', key: `${mod}Shift+Z` },
+    { label: '删除所选片段', key: 'Delete / Backspace' },
+    { label: '编辑位置逐帧移动', key: '← / →' },
+    { label: '取消正在拖动', key: 'Esc' },
   ]
+  const recentItems = recentProjects.slice(0, 5).map((entry) => ({ id: `recent-${entry.path}`, label: entry.name, icon: <Clock3 />, onClick: () => void openRecentProject(entry.path) }))
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
       if (event.isComposing || !(mac ? event.metaKey : event.ctrlKey) || event.altKey) return
@@ -85,6 +97,7 @@ export function Toolbar({ onExport, onSettings, showLibrary, showInspector, onTo
         <DropdownMenu className="project-toolbar__menu" trigger={<Button variant="secondary" className="project-toolbar__menu-trigger" aria-label="项目菜单" title="项目菜单" disabled={busy}><span>菜单</span><ChevronDown size={12} strokeWidth={1.6} /></Button>} items={[
           { id: 'new', label: '新建项目', shortcut: `${mod}N`, icon: <Plus />, disabled: busy, onClick: () => void newProject() },
           { id: 'open', label: '打开项目…', shortcut: `${mod}O`, icon: <FolderOpen />, disabled: busy, onClick: open },
+          ...(recentItems.length > 0 ? ['separator' as const, ...recentItems] : []),
           'separator',
           { id: 'save', label: '保存项目', shortcut: `${mod}S`, icon: <Save />, disabled: busy, onClick: () => void saveProject() },
           'separator',
@@ -104,7 +117,7 @@ export function Toolbar({ onExport, onSettings, showLibrary, showInspector, onTo
           { id: 'reset', label: '恢复默认布局', onClick: onResetLayout },
         ]} />
         <span className="project-toolbar__separator" aria-hidden="true" />
-        <Button variant="accent" className="project-toolbar__export" onClick={onExport} aria-label="导出" title="导出"><Upload size={16} strokeWidth={1.6} /><span>导出</span></Button>
+        <Button variant="accent" className="project-toolbar__export" onClick={onExport} disabled={busy} aria-label="导出" title="导出"><Upload size={16} strokeWidth={1.6} /><span>导出</span></Button>
         {windows && <div className="project-toolbar__window-controls" data-no-window-drag="true" aria-label="窗口控制">
           <Button variant="ghost" className="project-toolbar__window-control" onClick={() => void runWindowAction('minimize')} aria-label="最小化" title="最小化"><Minus size={14} strokeWidth={1.6} /></Button>
           <Button variant="ghost" className="project-toolbar__window-control" onClick={() => void runWindowAction('toggleMaximize')} aria-label={maximized ? '还原' : '最大化'} title={maximized ? '还原' : '最大化'}>{maximized ? <Copy size={12} strokeWidth={1.6} /> : <Square size={12} strokeWidth={1.6} />}</Button>
@@ -116,7 +129,7 @@ export function Toolbar({ onExport, onSettings, showLibrary, showInspector, onTo
         <Input aria-label="项目名称" data-dialog-autofocus maxLength={120} value={draftName} onChange={(event) => setDraftName(event.target.value)} />
       </Dialog>
       <Dialog className="project-toolbar-dialog" open={shortcutsOpen} onOpenChange={setShortcutsOpen} title="快捷键" description="在工作区使用。编辑文本时，快捷键交给输入框处理。" icon={<Keyboard size={20} />} hideCancel confirmText="完成">
-        <dl className="project-toolbar-shortcuts">{shortcuts.map(({ label, key }) => <div key={key}><dt>{label}</dt><dd><kbd>{mod}{key}</kbd></dd></div>)}</dl>
+        <dl className="project-toolbar-shortcuts">{shortcuts.map(({ label, key }) => <div key={key}><dt>{label}</dt><dd><kbd>{key}</kbd></dd></div>)}</dl>
       </Dialog>
     </header>
   )

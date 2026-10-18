@@ -1,0 +1,5 @@
+.native-source-seek { display: flex; justify-self: end; align-items: center; gap: var(--kc-space-1); color: var(--kc-color-text-secondary); font-size: var(--kc-font-size-timecode); }
+.native-source-seek .native-source-seek-input { width: 84px; height: 28px; padding: 0 var(--kc-space-2); font-family: var(--kc-font-mono); font-size: var(--kc-font-size-timecode); font-variant-numeric: tabular-nums; }
+@container (max-width: 440px) {
+  .native-source-preview .timecode-total, .native-source-preview .timecode-separator { display: none; }
+}

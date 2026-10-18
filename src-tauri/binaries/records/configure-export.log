@@ -1,0 +1,109 @@
+install prefix            /e/ffmpeg-build/install-n7.1-export
+source path               .
+C compiler                x86_64-w64-mingw32-gcc
+C library                 mingw64
+host C compiler           gcc
+host C library            mingw64
+ARCH                      x86 (generic)
+big-endian                no
+runtime cpu detection     yes
+standalone assembly       yes
+x86 assembler             nasm
+MMX enabled               yes
+MMXEXT enabled            yes
+3DNow! enabled            yes
+3DNow! extended enabled   yes
+SSE enabled               yes
+SSSE3 enabled             yes
+AESNI enabled             yes
+AVX enabled               yes
+AVX2 enabled              yes
+AVX-512 enabled           yes
+AVX-512ICL enabled        yes
+XOP enabled               yes
+FMA3 enabled              yes
+FMA4 enabled              yes
+i686 features enabled     yes
+CMOV is fast              yes
+EBX available             yes
+EBP available             yes
+debug symbols             no
+strip symbols             yes
+optimize for size         no
+optimizations             yes
+static                    yes
+shared                    no
+postprocessing support    no
+network support           no
+threading support         w32threads
+safe bitstream reader     yes
+texi2html enabled         no
+perl enabled              yes
+pod2man enabled           no
+makeinfo enabled          no
+makeinfo supports HTML    no
+xmllint enabled           no
+
+External libraries:
+mediafoundation         zlib
+
+External libraries providing hardware acceleration:
+
+Libraries:
+avcodec                 avformat                swscale
+avdevice                avutil
+avfilter                swresample
+
+Programs:
+ffmpeg                  ffprobe
+
+Enabled decoders:
+aac                     mp3                     wrapped_avframe
+h264                    pcm_s16le
+mjpeg                   png
+
+Enabled encoders:
+aac                     pcm_s16le               wrapped_avframe
+h264_mf                 png
+mjpeg                   rawvideo
+
+Enabled hwaccels:
+
+Enabled parsers:
+aac                     h264                    png
+ac3                     mpegaudio
+
+Enabled demuxers:
+image2                  mov                     wav
+image2pipe              mp3
+
+Enabled muxers:
+image2                  mp3                     wav
+image2pipe              mp4
+mov                     rawvideo
+
+Enabled protocols:
+file                    pipe
+
+Enabled filters:
+adelay                  color                   setpts
+afade                   concat                  setsar
+aformat                 crop                    showwaves
+amix                    format                  split
+anull                   fps                     testsrc2
+anullsrc                hflip                   thumbnail
+apad                    null                    transpose
+aresample               overlay                 trim
+asetpts                 pad                     vflip
+asplit                  rotate                  volume
+atrim                   scale
+
+Enabled bsfs:
+aac_adtstoasc           h264_mp4toannexb        vp9_superframe
+
+Enabled indevs:
+lavfi
+
+Enabled outdevs:
+
+License: LGPL version 2.1 or later
